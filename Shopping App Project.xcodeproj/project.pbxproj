@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		5D348B822974768B001FAF2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B812974768B001FAF2A /* AppDelegate.swift */; };
 		5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B832974768B001FAF2A /* SceneDelegate.swift */; };
-		5D348B862974768B001FAF2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B852974768B001FAF2A /* ViewController.swift */; };
+		5D348B862974768B001FAF2A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B852974768B001FAF2A /* WelcomeViewController.swift */; };
 		5D348B892974768B001FAF2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D348B872974768B001FAF2A /* Main.storyboard */; };
 		5D348B8C2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B8A2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld */; };
 		5D348B8E2974768D001FAF2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D348B8D2974768D001FAF2A /* Assets.xcassets */; };
 		5D348B912974768D001FAF2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */; };
+		5D348B9929748C71001FAF2A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B9829748C71001FAF2A /* LoginVC.swift */; };
+		5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B9A29748C86001FAF2A /* RegisterVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5D348B7E2974768B001FAF2A /* Shopping App Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping App Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D348B812974768B001FAF2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D348B832974768B001FAF2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5D348B852974768B001FAF2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5D348B852974768B001FAF2A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		5D348B882974768B001FAF2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D348B8B2974768B001FAF2A /* Shopping_App_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shopping_App_Project.xcdatamodel; sourceTree = "<group>"; };
 		5D348B8D2974768D001FAF2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D348B902974768D001FAF2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D348B922974768D001FAF2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D348B9829748C71001FAF2A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		5D348B9A29748C86001FAF2A /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,26 @@
 		5D348B802974768B001FAF2A /* Shopping App Project */ = {
 			isa = PBXGroup;
 			children = (
-				5D348B812974768B001FAF2A /* AppDelegate.swift */,
-				5D348B832974768B001FAF2A /* SceneDelegate.swift */,
-				5D348B852974768B001FAF2A /* ViewController.swift */,
+				5D52FBD829749319002A6EB2 /* Delegates */,
 				5D348B872974768B001FAF2A /* Main.storyboard */,
+				5D348B852974768B001FAF2A /* WelcomeViewController.swift */,
+				5D348B9829748C71001FAF2A /* LoginVC.swift */,
+				5D348B9A29748C86001FAF2A /* RegisterVC.swift */,
 				5D348B8D2974768D001FAF2A /* Assets.xcassets */,
 				5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */,
 				5D348B922974768D001FAF2A /* Info.plist */,
 				5D348B8A2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld */,
 			);
 			path = "Shopping App Project";
+			sourceTree = "<group>";
+		};
+		5D52FBD829749319002A6EB2 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				5D348B812974768B001FAF2A /* AppDelegate.swift */,
+				5D348B832974768B001FAF2A /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D348B862974768B001FAF2A /* ViewController.swift in Sources */,
+				5D348B862974768B001FAF2A /* WelcomeViewController.swift in Sources */,
 				5D348B8C2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld in Sources */,
 				5D348B822974768B001FAF2A /* AppDelegate.swift in Sources */,
+				5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */,
 				5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */,
+				5D348B9929748C71001FAF2A /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
