@@ -26,7 +26,8 @@ class WelcomeViewController: UIViewController {
     
     
     @IBAction func loginPressed (_ sender: UIButton) {
-     
+        let vc = storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginVC
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func RegistrationPressed (_ sender: UIButton) {

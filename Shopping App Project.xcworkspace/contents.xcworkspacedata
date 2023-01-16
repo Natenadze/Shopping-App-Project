@@ -4,7 +4,4 @@
    <FileRef
       location = "group:Shopping App Project.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
 </Workspace>

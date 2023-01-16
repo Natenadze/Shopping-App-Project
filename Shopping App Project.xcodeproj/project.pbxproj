@@ -20,6 +20,8 @@
 		5D912B38297587C6002CA421 /* ShoppingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B37297587C6002CA421 /* ShoppingPage.swift */; };
 		5D912B3A297594E6002CA421 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B39297594E6002CA421 /* Animations.swift */; };
 		5D912B3D29759947002CA421 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D912B3C29759947002CA421 /* FirebaseAuth */; };
+		5D912B412975AECA002CA421 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B3F2975AECA002CA421 /* CustomCell.swift */; };
+		5D912B422975AECA002CA421 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D912B402975AECA002CA421 /* CustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		5D912B35297579C7002CA421 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D912B37297587C6002CA421 /* ShoppingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPage.swift; sourceTree = "<group>"; };
 		5D912B39297594E6002CA421 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		5D912B3F2975AECA002CA421 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		5D912B402975AECA002CA421 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,6 @@
 			children = (
 				5D348B802974768B001FAF2A /* Shopping App Project */,
 				5D348B7F2974768B001FAF2A /* Products */,
-				7FDBA82F8567A38C6BB18324 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,11 +76,11 @@
 			children = (
 				5D52FBD829749319002A6EB2 /* Delegates */,
 				5D348B852974768B001FAF2A /* WelcomeViewController.swift */,
-				5D912B39297594E6002CA421 /* Animations.swift */,
+				5D912B432975B588002CA421 /* Animations */,
 				5D348B9829748C71001FAF2A /* LoginVC.swift */,
 				5D348B9A29748C86001FAF2A /* RegisterVC.swift */,
 				5D912B37297587C6002CA421 /* ShoppingPage.swift */,
-				5D348B872974768B001FAF2A /* Main.storyboard */,
+				5D912B3E2975AE98002CA421 /* View */,
 				5D348B8D2974768D001FAF2A /* Assets.xcassets */,
 				5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */,
 				5D348B922974768D001FAF2A /* Info.plist */,
@@ -96,11 +99,22 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		7FDBA82F8567A38C6BB18324 /* Pods */ = {
+		5D912B3E2975AE98002CA421 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D348B872974768B001FAF2A /* Main.storyboard */,
+				5D912B3F2975AECA002CA421 /* CustomCell.swift */,
+				5D912B402975AECA002CA421 /* CustomCell.xib */,
 			);
-			path = Pods;
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D912B432975B588002CA421 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				5D912B39297594E6002CA421 /* Animations.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D912B422975AECA002CA421 /* CustomCell.xib in Resources */,
 				5D348B912974768D001FAF2A /* LaunchScreen.storyboard in Resources */,
 				5D912B36297579C7002CA421 /* GoogleService-Info.plist in Resources */,
 				5D348B8E2974768D001FAF2A /* Assets.xcassets in Resources */,
@@ -185,6 +200,7 @@
 				5D348B8C2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld in Sources */,
 				5D912B38297587C6002CA421 /* ShoppingPage.swift in Sources */,
 				5D348B822974768B001FAF2A /* AppDelegate.swift in Sources */,
+				5D912B412975AECA002CA421 /* CustomCell.swift in Sources */,
 				5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */,
 				5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */,
 				5D912B3A297594E6002CA421 /* Animations.swift in Sources */,

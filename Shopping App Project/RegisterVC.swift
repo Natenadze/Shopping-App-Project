@@ -32,7 +32,7 @@ class RegisterVC: UIViewController {
                     let mainScreen = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
                     self.navigationController!.pushViewController(mainScreen, animated: true)
 
-//                    self.performSegue(withIdentifier: "mainScreenFromRegister", sender: self)
+
                 }
             }
         }
