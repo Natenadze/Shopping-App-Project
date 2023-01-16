@@ -16,6 +16,7 @@
 		5D348B912974768D001FAF2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */; };
 		5D348B9929748C71001FAF2A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B9829748C71001FAF2A /* LoginVC.swift */; };
 		5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B9A29748C86001FAF2A /* RegisterVC.swift */; };
+		5D912B3429756ACC002CA421 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B3329756ACC002CA421 /* Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		5D348B922974768D001FAF2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D348B9829748C71001FAF2A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		5D348B9A29748C86001FAF2A /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		5D912B3329756ACC002CA421 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				5D52FBD829749319002A6EB2 /* Delegates */,
-				5D348B872974768B001FAF2A /* Main.storyboard */,
 				5D348B852974768B001FAF2A /* WelcomeViewController.swift */,
+				5D912B3329756ACC002CA421 /* Animations.swift */,
 				5D348B9829748C71001FAF2A /* LoginVC.swift */,
 				5D348B9A29748C86001FAF2A /* RegisterVC.swift */,
+				5D348B872974768B001FAF2A /* Main.storyboard */,
 				5D348B8D2974768D001FAF2A /* Assets.xcassets */,
 				5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */,
 				5D348B922974768D001FAF2A /* Info.plist */,
@@ -161,6 +164,7 @@
 				5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */,
 				5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */,
 				5D348B9929748C71001FAF2A /* LoginVC.swift in Sources */,
+				5D912B3429756ACC002CA421 /* Animations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

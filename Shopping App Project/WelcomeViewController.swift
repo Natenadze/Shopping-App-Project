@@ -8,22 +8,32 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        animateTitle(with: "CITY MALL")
+    }
+    
+    func animateTitle(with title: String) {
+        titleLabel.text = ""
+        var charIndex = 0.0
+        for letter in title {
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { _ in
+                self.titleLabel.text?.append(letter)
+            }
+            charIndex += 1
+        }
     }
     
     @IBAction func loginPressed (_ sender: UIButton) {
-        let loginVC = storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginVC
-        
-        navigationController?.pushViewController(loginVC, animated: true)
+     
     }
     
     @IBAction func RegistrationPressed (_ sender: UIButton) {
-        let registerVC = storyboard?.instantiateViewController(withIdentifier: "registerVC") as! RegisterVC
-        
-        navigationController?.pushViewController(registerVC, animated: true)
+   
     }
 
 }
