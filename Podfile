@@ -6,7 +6,5 @@ target 'Shopping App Project' do
   use_frameworks!
 
   # Pods for Shopping App Project
-pod 'FirebaseAuth'
-pod 'FirebaseFirestore'
 
 end

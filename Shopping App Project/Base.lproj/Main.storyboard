@@ -68,7 +68,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="RegistrationPressed:" destination="4B6-BI-mkj" eventType="touchUpInside" id="a9j-J0-uTZ"/>
-                                            <segue destination="Ocm-WT-LVo" kind="popoverPresentation" popoverAnchorView="f6H-wp-SEm" id="xV9-LH-fr8">
+                                            <segue destination="0SN-u3-6gY" kind="popoverPresentation" popoverAnchorView="f6H-wp-SEm" id="xV9-LH-fr8">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -195,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="944.27480916030527" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
+        <!--Shopping Page-->
         <scene sceneID="fAE-ZE-igC">
             <objects>
-                <viewController id="mhs-f8-F4b" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainScreen" id="mhs-f8-F4b" customClass="ShoppingPage" customModule="Shopping_App_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pbq-kT-K71">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -209,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0j-lZ-Gsw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2074" y="377"/>
+            <point key="canvasLocation" x="2999.2366412213737" y="376.76056338028172"/>
         </scene>
         <!--Registration Screen-->
         <scene sceneID="tSl-af-fwA">
@@ -220,10 +220,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKL-ct-V4g" userLabel="upView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="325.66666666666669"/>
+                                <rect key="frame" x="0.0" y="56" width="393" height="327"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="კეთილი იყოს მობრძანება!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZHD-od-gfu">
-                                        <rect key="frame" x="52" y="71.666666666666657" width="289.33333333333331" height="35"/>
+                                        <rect key="frame" x="52" y="72" width="289.33333333333331" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="gbH-82-uxP"/>
                                         </constraints>
@@ -232,7 +232,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-Ra-2tL">
-                                        <rect key="frame" x="-78.666666666666686" y="116.66666666666666" width="550.33333333333337" height="201.99999999999997"/>
+                                        <rect key="frame" x="-78.666666666666686" y="117" width="550.33333333333337" height="203"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -248,10 +248,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ssb-Hm-vbX" userLabel="bottomView">
-                                <rect key="frame" x="0.0" y="384.66666666666674" width="393" height="398.33333333333326"/>
+                                <rect key="frame" x="0.0" y="383" width="393" height="400"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iVx-Gb-bCg" userLabel="text Stack">
-                                        <rect key="frame" x="16" y="10" width="361" height="199.33333333333334"/>
+                                        <rect key="frame" x="16" y="10" width="361" height="200"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ECX-VS-dpq" userLabel="eMail TextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="53.333333333333336"/>
@@ -259,17 +259,20 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JI3-2C-TzI" userLabel="Password TextField">
-                                                <rect key="frame" x="0.0" y="73.333333333333314" width="361" height="53"/>
+                                                <rect key="frame" x="0.0" y="73.333333333333314" width="361" height="53.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HH1-Mp-zno">
-                                                <rect key="frame" x="0.0" y="146.33333333333331" width="361" height="53"/>
+                                                <rect key="frame" x="0.0" y="146.66666666666663" width="361" height="53.333333333333343"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="შესვლა"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Register" cornerStyle="medium">
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="22"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="registerPressed:" destination="Ocm-WT-LVo" eventType="touchUpInside" id="CPv-If-AhT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -298,13 +301,16 @@
                             <constraint firstItem="Ssb-Hm-vbX" firstAttribute="height" secondItem="898-TW-1EU" secondAttribute="height" multiplier="0.55" id="tds-mq-p8w"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="IUC-cx-zVJ"/>
                     <connections>
+                        <outlet property="emailTextField" destination="ECX-VS-dpq" id="AXu-Ty-dQx"/>
+                        <outlet property="passwordTextField" destination="JI3-2C-TzI" id="nsM-BS-ryB"/>
                         <segue destination="mhs-f8-F4b" kind="show" identifier="mainScreenFromRegister" id="H3r-7b-tS9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2EF-7f-aDy" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="944.27480916030527" y="762.67605633802816"/>
+            <point key="canvasLocation" x="1870.9923664122136" y="762.67605633802816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JqU-LV-h2F">
@@ -324,13 +330,31 @@
             </objects>
             <point key="canvasLocation" x="-1129.0076335877861" y="380.28169014084511"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="THq-Xl-G1X">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0SN-u3-6gY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aBH-BP-EHT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ocm-WT-LVo" kind="relationship" relationship="rootViewController" id="iJ9-px-2TA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1eV-Z7-PMQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.27480916030527" y="762.67605633802816"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SBE-Fr-NEI"/>
+        <segue reference="H3r-7b-tS9"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="city" width="550" height="489"/>
-        <image name="logo" width="770" height="565"/>
+        <image name="logo" width="926" height="679"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

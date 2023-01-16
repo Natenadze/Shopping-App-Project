@@ -14,26 +14,24 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        animateTitle(with: "CITY MALL")
+
     }
     
-    func animateTitle(with title: String) {
-        titleLabel.text = ""
-        var charIndex = 0.0
-        for letter in title {
-            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { _ in
-                self.titleLabel.text?.append(letter)
-            }
-            charIndex += 1
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        titleLabel.animateTitle()
     }
+    
+    
+    
+    
     
     @IBAction func loginPressed (_ sender: UIButton) {
      
     }
     
     @IBAction func RegistrationPressed (_ sender: UIButton) {
-   
+        let vc = storyboard?.instantiateViewController(withIdentifier: "registerVC") as! RegisterVC
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

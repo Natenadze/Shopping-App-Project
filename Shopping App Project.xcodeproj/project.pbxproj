@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4EF44C9A8C877104109D60B2 /* Pods_Shopping_App_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC0929B7692BA73AD83F471 /* Pods_Shopping_App_Project.framework */; };
 		5D348B822974768B001FAF2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B812974768B001FAF2A /* AppDelegate.swift */; };
 		5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B832974768B001FAF2A /* SceneDelegate.swift */; };
 		5D348B862974768B001FAF2A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B852974768B001FAF2A /* WelcomeViewController.swift */; };
@@ -17,13 +16,13 @@
 		5D348B912974768D001FAF2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */; };
 		5D348B9929748C71001FAF2A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B9829748C71001FAF2A /* LoginVC.swift */; };
 		5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B9A29748C86001FAF2A /* RegisterVC.swift */; };
-		5D912B3429756ACC002CA421 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B3329756ACC002CA421 /* Animations.swift */; };
 		5D912B36297579C7002CA421 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D912B35297579C7002CA421 /* GoogleService-Info.plist */; };
+		5D912B38297587C6002CA421 /* ShoppingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B37297587C6002CA421 /* ShoppingPage.swift */; };
+		5D912B3A297594E6002CA421 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B39297594E6002CA421 /* Animations.swift */; };
+		5D912B3D29759947002CA421 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D912B3C29759947002CA421 /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0EC0929B7692BA73AD83F471 /* Pods_Shopping_App_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopping_App_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		14F9D1C74EAAAEF312E44043 /* Pods-Shopping App Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopping App Project.debug.xcconfig"; path = "Target Support Files/Pods-Shopping App Project/Pods-Shopping App Project.debug.xcconfig"; sourceTree = "<group>"; };
 		5D348B7E2974768B001FAF2A /* Shopping App Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping App Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D348B812974768B001FAF2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D348B832974768B001FAF2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,9 +34,9 @@
 		5D348B922974768D001FAF2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D348B9829748C71001FAF2A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		5D348B9A29748C86001FAF2A /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
-		5D912B3329756ACC002CA421 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		5D912B35297579C7002CA421 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9F24793367893CFC2DFC0812 /* Pods-Shopping App Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopping App Project.release.xcconfig"; path = "Target Support Files/Pods-Shopping App Project/Pods-Shopping App Project.release.xcconfig"; sourceTree = "<group>"; };
+		5D912B37297587C6002CA421 /* ShoppingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPage.swift; sourceTree = "<group>"; };
+		5D912B39297594E6002CA421 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF44C9A8C877104109D60B2 /* Pods_Shopping_App_Project.framework in Frameworks */,
+				5D912B3D29759947002CA421 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +57,6 @@
 				5D348B802974768B001FAF2A /* Shopping App Project */,
 				5D348B7F2974768B001FAF2A /* Products */,
 				7FDBA82F8567A38C6BB18324 /* Pods */,
-				8AA71EA8DD6C26B61E57FD3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,9 +73,10 @@
 			children = (
 				5D52FBD829749319002A6EB2 /* Delegates */,
 				5D348B852974768B001FAF2A /* WelcomeViewController.swift */,
-				5D912B3329756ACC002CA421 /* Animations.swift */,
+				5D912B39297594E6002CA421 /* Animations.swift */,
 				5D348B9829748C71001FAF2A /* LoginVC.swift */,
 				5D348B9A29748C86001FAF2A /* RegisterVC.swift */,
+				5D912B37297587C6002CA421 /* ShoppingPage.swift */,
 				5D348B872974768B001FAF2A /* Main.storyboard */,
 				5D348B8D2974768D001FAF2A /* Assets.xcassets */,
 				5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */,
@@ -100,19 +99,8 @@
 		7FDBA82F8567A38C6BB18324 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				14F9D1C74EAAAEF312E44043 /* Pods-Shopping App Project.debug.xcconfig */,
-				9F24793367893CFC2DFC0812 /* Pods-Shopping App Project.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		8AA71EA8DD6C26B61E57FD3B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0EC0929B7692BA73AD83F471 /* Pods_Shopping_App_Project.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,17 +110,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D348B952974768D001FAF2A /* Build configuration list for PBXNativeTarget "Shopping App Project" */;
 			buildPhases = (
-				ACBD62993A599AA435B1F31B /* [CP] Check Pods Manifest.lock */,
 				5D348B7A2974768B001FAF2A /* Sources */,
 				5D348B7B2974768B001FAF2A /* Frameworks */,
 				5D348B7C2974768B001FAF2A /* Resources */,
-				E3A6D98AECE302512B3323B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Shopping App Project";
+			packageProductDependencies = (
+				5D912B3C29759947002CA421 /* FirebaseAuth */,
+			);
 			productName = "Shopping App Project";
 			productReference = 5D348B7E2974768B001FAF2A /* Shopping App Project.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +150,9 @@
 				Base,
 			);
 			mainGroup = 5D348B752974768B001FAF2A;
+			packageReferences = (
+				5D912B3B29759947002CA421 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 5D348B7F2974768B001FAF2A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -184,48 +176,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		ACBD62993A599AA435B1F31B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Shopping App Project-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E3A6D98AECE302512B3323B8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Shopping App Project/Pods-Shopping App Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Shopping App Project/Pods-Shopping App Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shopping App Project/Pods-Shopping App Project-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		5D348B7A2974768B001FAF2A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -233,11 +183,12 @@
 			files = (
 				5D348B862974768B001FAF2A /* WelcomeViewController.swift in Sources */,
 				5D348B8C2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld in Sources */,
+				5D912B38297587C6002CA421 /* ShoppingPage.swift in Sources */,
 				5D348B822974768B001FAF2A /* AppDelegate.swift in Sources */,
 				5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */,
 				5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */,
+				5D912B3A297594E6002CA421 /* Animations.swift in Sources */,
 				5D348B9929748C71001FAF2A /* LoginVC.swift in Sources */,
-				5D912B3429756ACC002CA421 /* Animations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +330,6 @@
 		};
 		5D348B962974768D001FAF2A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14F9D1C74EAAAEF312E44043 /* Pods-Shopping App Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -393,6 +343,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -408,7 +359,6 @@
 		};
 		5D348B972974768D001FAF2A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F24793367893CFC2DFC0812 /* Pods-Shopping App Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -422,6 +372,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +408,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D912B3B29759947002CA421 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D912B3C29759947002CA421 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D912B3B29759947002CA421 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5D348B8A2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld */ = {
