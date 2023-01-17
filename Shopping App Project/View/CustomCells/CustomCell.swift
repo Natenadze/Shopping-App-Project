@@ -8,7 +8,13 @@
 import UIKit
 
 class CustomCell: UITableViewCell {
-
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var stockLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var chosenQuantityLabel: UILabel!
+    @IBOutlet weak var productImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -17,8 +23,16 @@ class CustomCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func plusPressed(_ sender: UIButton) {
         
     }
+    @IBAction func minusPressed(_ sender: UIButton) {
+        
+    }
+    
     
 }

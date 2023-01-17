@@ -117,7 +117,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="4wK-ra-eBp">
-                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333348" height="211.99999999999997"/>
+                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333337" height="211.99999999999997"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -203,35 +203,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="d4n-G3-Bxj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="d4n-G3-Bxj">
                                 <rect key="frame" x="0.0" y="59" width="393" height="663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R88-Tq-Pex" userLabel="BusketInfoView">
                                 <rect key="frame" x="0.0" y="722" width="393" height="130"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="archivebox" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eIq-Iw-f8Z">
-                                        <rect key="frame" x="14" y="8" width="68" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="archivebox" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eIq-Iw-f8Z">
+                                        <rect key="frame" x="14" y="8.0000000000000355" width="68" height="55.999999999999993"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3905$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK9-xf-Ljp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3905$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK9-xf-Ljp">
                                         <rect key="frame" x="96" y="43" width="52" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3 x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uW8-ID-luE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uW8-ID-luE">
                                         <rect key="frame" x="96" y="8" width="24" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="კალათაში გადასვლა" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8B6-eS-h8a">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="კალათაში გადასვლა" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8B6-eS-h8a">
                                         <rect key="frame" x="191" y="34" width="154" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -240,7 +236,20 @@
                                 <color key="backgroundColor" systemColor="tintColor"/>
                                 <color key="tintColor" red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="0.91977959440000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="uW8-ID-luE" firstAttribute="leading" secondItem="ZK9-xf-Ljp" secondAttribute="leading" id="2KY-xo-DBx"/>
+                                    <constraint firstItem="uW8-ID-luE" firstAttribute="leading" secondItem="R88-Tq-Pex" secondAttribute="leading" constant="96" id="5rD-LR-O9j"/>
+                                    <constraint firstAttribute="bottom" secondItem="eIq-Iw-f8Z" secondAttribute="bottom" constant="64.666666666666657" id="8Ig-dO-pvQ"/>
+                                    <constraint firstItem="8B6-eS-h8a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZK9-xf-Ljp" secondAttribute="trailing" symbolic="YES" id="FnV-ZL-ssy"/>
+                                    <constraint firstItem="uW8-ID-luE" firstAttribute="top" secondItem="R88-Tq-Pex" secondAttribute="topMargin" id="K4R-Rt-HM6"/>
+                                    <constraint firstItem="8B6-eS-h8a" firstAttribute="top" secondItem="R88-Tq-Pex" secondAttribute="top" constant="34" id="Oqi-s9-Ke0"/>
+                                    <constraint firstItem="ZK9-xf-Ljp" firstAttribute="leading" secondItem="eIq-Iw-f8Z" secondAttribute="trailing" constant="14" id="R3z-5w-VG1"/>
+                                    <constraint firstItem="eIq-Iw-f8Z" firstAttribute="top" secondItem="R88-Tq-Pex" secondAttribute="top" constant="6.3333333333333357" id="SUa-YO-We3"/>
+                                    <constraint firstItem="eIq-Iw-f8Z" firstAttribute="leading" secondItem="R88-Tq-Pex" secondAttribute="leading" constant="14" id="TeS-3N-KtD"/>
                                     <constraint firstAttribute="height" constant="130" id="YvD-k0-Cdl"/>
+                                    <constraint firstAttribute="trailing" secondItem="8B6-eS-h8a" secondAttribute="trailing" constant="48" id="blc-bD-xhE"/>
+                                    <constraint firstItem="ZK9-xf-Ljp" firstAttribute="top" secondItem="uW8-ID-luE" secondAttribute="bottom" constant="14" id="gax-h5-vc7"/>
+                                    <constraint firstAttribute="trailing" secondItem="uW8-ID-luE" secondAttribute="trailing" constant="273" id="m4z-8B-SCd"/>
+                                    <constraint firstItem="uW8-ID-luE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eIq-Iw-f8Z" secondAttribute="trailing" symbolic="YES" id="v4x-s5-BNq"/>
                                 </constraints>
                             </view>
                         </subviews>

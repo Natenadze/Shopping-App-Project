@@ -23,6 +23,7 @@
 		5D912B412975AECA002CA421 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B3F2975AECA002CA421 /* CustomCell.swift */; };
 		5D912B422975AECA002CA421 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D912B402975AECA002CA421 /* CustomCell.xib */; };
 		5D912B472975BA51002CA421 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B462975BA51002CA421 /* ProductModel.swift */; };
+		5D912B492976C0C1002CA421 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B482976C0C1002CA421 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		5D912B3F2975AECA002CA421 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		5D912B402975AECA002CA421 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		5D912B462975BA51002CA421 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		5D912B482976C0C1002CA421 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				5D912B452975BA34002CA421 /* Model */,
 				5D52FBD829749319002A6EB2 /* Delegates */,
 				5D912B432975B588002CA421 /* Animations */,
+				5D912B4A2976C0CE002CA421 /* Network */,
 				5D912B3E2975AE98002CA421 /* View */,
 				5D348B8D2974768D001FAF2A /* Assets.xcassets */,
 				5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */,
@@ -134,6 +137,14 @@
 				5D912B462975BA51002CA421 /* ProductModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5D912B4A2976C0CE002CA421 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5D912B482976C0C1002CA421 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 				5D348B8C2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld in Sources */,
 				5D912B38297587C6002CA421 /* ShoppingPage.swift in Sources */,
 				5D348B822974768B001FAF2A /* AppDelegate.swift in Sources */,
+				5D912B492976C0C1002CA421 /* NetworkManager.swift in Sources */,
 				5D912B412975AECA002CA421 /* CustomCell.swift in Sources */,
 				5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */,
 				5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */,

@@ -12,46 +12,92 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="143" id="KGk-i7-Jjw" customClass="CustomCell" customModule="Shopping_App_Project" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="392" height="143"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="392" height="143"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="desktopcomputer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ftq-L0-foB">
-                        <rect key="frame" x="20" y="21" width="91" height="95"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.closed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ftq-L0-foB">
+                        <rect key="frame" x="15" y="10.333333333333336" width="100" height="109.66666666666666"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="110" id="mVU-ir-HEf"/>
+                            <constraint firstAttribute="width" constant="100" id="uLL-ks-wVk"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Apple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8B6-jT-soD">
-                        <rect key="frame" x="162" y="10" width="74" height="29"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-UZ-zfn">
+                        <rect key="frame" x="125" y="20" width="75.333333333333314" height="99"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Apple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8B6-jT-soD">
+                                <rect key="frame" x="0.0" y="0.0" width="75.333333333333329" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Stock: 45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DtM-lO-1XQ">
+                                <rect key="frame" x="0.0" y="35.333333333333336" width="75.333333333333329" height="20.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price: 123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="wQu-Md-xM2">
+                                <rect key="frame" x="0.0" y="70.666666666666671" width="75.333333333333329" height="28.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fha-8Z-vjU">
+                        <rect key="frame" x="331" y="97" width="41" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="+">
+                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="27"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="plusPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iep-Kw-gOt"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfF-Fl-5OA">
+                        <rect key="frame" x="300" y="99" width="33" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stock: 45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DtM-lO-1XQ">
-                        <rect key="frame" x="162" y="47" width="74" height="29"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k53-5R-ySJ">
+                        <rect key="frame" x="264" y="97" width="35" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price: 123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="wQu-Md-xM2">
-                        <rect key="frame" x="162" y="84" width="86" height="29"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="etk-GU-c2p">
-                        <rect key="frame" x="274" y="81" width="94" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </stepper>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="-">
+                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="27"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="minusPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lEK-Bt-G9C"/>
+                        </connections>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Ftq-L0-foB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="9Me-Dq-ifC"/>
+                    <constraint firstItem="Xco-UZ-zfn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="RYx-3p-YGO"/>
+                    <constraint firstAttribute="bottom" secondItem="Xco-UZ-zfn" secondAttribute="bottom" constant="10" id="T7k-Vh-wCd"/>
+                    <constraint firstItem="Xco-UZ-zfn" firstAttribute="height" secondItem="Ftq-L0-foB" secondAttribute="height" multiplier="0.9" id="V4z-6q-9Ly"/>
+                    <constraint firstItem="Xco-UZ-zfn" firstAttribute="leading" secondItem="Ftq-L0-foB" secondAttribute="trailing" constant="10" id="fNX-Kk-Iu7"/>
+                    <constraint firstItem="Ftq-L0-foB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="hz8-uk-9XO"/>
+                    <constraint firstAttribute="bottom" secondItem="Ftq-L0-foB" secondAttribute="bottom" constant="10" id="yQy-Vu-pjG"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="chosenQuantityLabel" destination="QfF-Fl-5OA" id="x6B-kj-Vdr"/>
+                <outlet property="priceLabel" destination="wQu-Md-xM2" id="joX-nl-nf0"/>
+                <outlet property="productImage" destination="Ftq-L0-foB" id="Pgc-hs-yGA"/>
+                <outlet property="stockLabel" destination="DtM-lO-1XQ" id="UG8-Mf-cW3"/>
+                <outlet property="titleLabel" destination="8B6-jT-soD" id="uvi-aP-bUA"/>
+            </connections>
             <point key="canvasLocation" x="16.793893129770993" y="54.577464788732399"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="desktopcomputer" catalog="system" width="128" height="101"/>
+        <image name="book.closed" catalog="system" width="115" height="128"/>
     </resources>
 </document>
