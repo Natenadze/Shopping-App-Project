@@ -13,10 +13,38 @@ class ShoppingPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        performURLRequest("https://dummyjson.com/products") { (data: ProductModel)  in
+            print(data.products[0].title)
+        }
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
+        
+    }
+    
+    func performURLRequest<T:Codable>(_ url: String, completion: @escaping (T)-> Void) {
+        guard let url = URL(string: url) else {return}
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error {
+                print(error.localizedDescription)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let status = httpResponse.statusCode
+                print(status)
+             
+            }
+            
+            guard let data else {return}
+            let result = try? JSONDecoder().decode(T.self, from: data)
+            guard let result else {return}
+            
+            DispatchQueue.main.async {
+                completion(result)
+            }
+            
+        }.resume()
     }
     
 

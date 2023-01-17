@@ -14,14 +14,14 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
         titleLabel.animateTitle()
     }
     
-    
+  
     
     
     
