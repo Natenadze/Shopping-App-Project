@@ -11,17 +11,17 @@ class ShoppingPage: UIViewController {
     
     var items: ProductModel!
     
+    var mainImage: UIImage?
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      print("viewDidLoad")
-    
         NetworkManager.performURLRequest("https://dummyjson.com/products") { (data: ProductModel)  in
             self.items = data
-         
- 
         }
+        performRequestForPosts(urlString: "https://i.dummyjson.com/data/products/6/thumbnail.png")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,9 +31,25 @@ class ShoppingPage: UIViewController {
         navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
+
     }
     
-    
+    func performRequestForPosts(urlString: String) {
+        let url = URL(string: urlString)!
+       
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error {
+                print(error.localizedDescription)
+            }
+            guard let data else {return}
+            self.mainImage = UIImage(data: data)
+        }.resume()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+      
+    }
     
     
 }
@@ -50,6 +66,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel.text = items.products[indexPath.row].title
         cell.stockLabel.text = String(items.products[indexPath.row].stock)
         cell.priceLabel.text = String(items.products[indexPath.row].price)
+        cell.productImage.image = mainImage
         
         return cell
     }

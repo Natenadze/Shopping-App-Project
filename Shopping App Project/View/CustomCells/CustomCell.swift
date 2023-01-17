@@ -9,6 +9,8 @@ import UIKit
 
 class CustomCell: UITableViewCell {
     
+    var quantity = 0
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stockLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -31,9 +33,18 @@ class CustomCell: UITableViewCell {
     // MARK: - IBActions
     
     @IBAction func plusPressed(_ sender: UIButton) {
+        quantity += 1
+        chosenQuantityLabel.text = String(quantity)
         
     }
     @IBAction func minusPressed(_ sender: UIButton) {
+        if quantity == 0 {
+            return
+        }else {
+            quantity -= 1
+            chosenQuantityLabel.text = String(quantity)
+        }
+    
         
     }
     
