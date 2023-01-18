@@ -56,7 +56,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
-        
+     
         cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
         cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
         cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
@@ -72,9 +72,20 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.layer.borderWidth = 1
+//        cell.layer.borderColor = UIColor.gray.cgColor
+//        cell.layer.cornerRadius = 10
+////        cell.separatorInset = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
+//    }
+
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
     }
+    
+    
+
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
@@ -85,7 +96,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
             image.contentMode = .scaleAspectFit
             header.addSubview(image)
             image.frame = CGRect(x: 0, y: 5, width: header.frame.size.width, height: 100)
-            let label = UILabel(frame: CGRect(x: 5, y: 90,
+            let label = UILabel(frame: CGRect(x: 5, y: 80,
                                               width: header.frame.size.width - 15,
                                               height: header.frame.size.height - 10))
             label.text = groupedItems[section][0].category
@@ -112,7 +123,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0: return 150
-        default: return 100
+        default: return 110
         }
         
     }
