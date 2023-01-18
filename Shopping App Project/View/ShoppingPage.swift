@@ -57,11 +57,11 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
         
-        cell.titleLabel.text = items[indexPath.row].title
-        cell.stockLabel.text = String(items[indexPath.row].stock)
-        cell.priceLabel.text = String(items[indexPath.row].price)
+        cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
+        cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
+        cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
         
-        URLSession.shared.dataTask(with: URL(string: items[indexPath.row].thumbnail)!) { data, response, error in
+        URLSession.shared.dataTask(with: URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!) { data, response, error in
             if let data = data {
                 DispatchQueue.main.async {
                     cell.imageView?.image = UIImage(data: data)
@@ -85,18 +85,21 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
             image.contentMode = .scaleAspectFit
             header.addSubview(image)
             image.frame = CGRect(x: 0, y: 5, width: header.frame.size.width, height: 100)
-            
-        }else {
-            let label = UILabel(frame: CGRect(x: 5, y: 5,
+            let label = UILabel(frame: CGRect(x: 5, y: 90,
                                               width: header.frame.size.width - 15,
                                               height: header.frame.size.height - 10))
             label.text = groupedItems[section][0].category
             label.font = .boldSystemFont(ofSize: 20)
             header.addSubview(label)
             
+        }else {
+            let label = UILabel(frame: CGRect(x: 5, y: 15,
+                                              width: header.frame.size.width - 15,
+                                              height: header.frame.size.height - 10))
+            label.text = groupedItems[section][0].category
+            label.font = .boldSystemFont(ofSize: 20)
+            header.addSubview(label)
         }
-       
-      
         return header
     }
     
@@ -107,6 +110,10 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
 
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        100
+        switch section {
+        case 0: return 150
+        default: return 100
+        }
+        
     }
 }
