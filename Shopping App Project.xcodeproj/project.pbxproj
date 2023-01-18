@@ -24,6 +24,9 @@
 		5D912B422975AECA002CA421 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D912B402975AECA002CA421 /* CustomCell.xib */; };
 		5D912B472975BA51002CA421 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B462975BA51002CA421 /* ProductModel.swift */; };
 		5D912B492976C0C1002CA421 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B482976C0C1002CA421 /* NetworkManager.swift */; };
+		5D912B74297860CE002CA421 /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B73297860CE002CA421 /* SummaryVC.swift */; };
+		5D912B762978610E002CA421 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B752978610E002CA421 /* ConfirmationVC.swift */; };
+		5D912B782978614B002CA421 /* PaymentErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B772978614B002CA421 /* PaymentErrorVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		5D912B402975AECA002CA421 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		5D912B462975BA51002CA421 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		5D912B482976C0C1002CA421 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5D912B73297860CE002CA421 /* SummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
+		5D912B752978610E002CA421 /* ConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationVC.swift; sourceTree = "<group>"; };
+		5D912B772978614B002CA421 /* PaymentErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentErrorVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,9 @@
 				5D348B9829748C71001FAF2A /* LoginVC.swift */,
 				5D348B9A29748C86001FAF2A /* RegisterVC.swift */,
 				5D912B37297587C6002CA421 /* ShoppingPage.swift */,
+				5D912B73297860CE002CA421 /* SummaryVC.swift */,
+				5D912B752978610E002CA421 /* ConfirmationVC.swift */,
+				5D912B772978614B002CA421 /* PaymentErrorVC.swift */,
 				5D348B872974768B001FAF2A /* Main.storyboard */,
 				5D912B442975B8E0002CA421 /* CustomCells */,
 			);
@@ -226,7 +235,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D912B782978614B002CA421 /* PaymentErrorVC.swift in Sources */,
 				5D348B862974768B001FAF2A /* WelcomeViewController.swift in Sources */,
+				5D912B762978610E002CA421 /* ConfirmationVC.swift in Sources */,
+				5D912B74297860CE002CA421 /* SummaryVC.swift in Sources */,
 				5D348B8C2974768B001FAF2A /* Shopping_App_Project.xcdatamodeld in Sources */,
 				5D912B38297587C6002CA421 /* ShoppingPage.swift in Sources */,
 				5D348B822974768B001FAF2A /* AppDelegate.swift in Sources */,

@@ -42,6 +42,11 @@ class ShoppingPage: UIViewController {
     }
     
     
+    @IBAction func goToSummary(_ sender: UIButton) {
+        let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
+        navigationController?.pushViewController(summaryVC.self, animated: true)
+    }
+    
 }
 
 extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
