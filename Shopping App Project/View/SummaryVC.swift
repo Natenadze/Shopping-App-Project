@@ -8,16 +8,32 @@
 import UIKit
 
 class SummaryVC: UIViewController {
+  
+    
+   
+    
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    
+    var price = ""
+    var total = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        priceLabel.text! = price
+        totalPriceLabel.text! = total
         navigationController?.navigationBar.isHidden = false
         navigationController?.title = "Summary"
         tableView.delegate = self
         tableView.dataSource = self
     }
+ 
+    
+   
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
@@ -25,6 +41,7 @@ class SummaryVC: UIViewController {
     
     @IBAction func payPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "declined", sender: self)
+        
     }
 
 }

@@ -7,44 +7,64 @@
 
 import UIKit
 
-class ShoppingPage: UIViewController {
+//protocol Sum {
+//    func summaryUpdate(price: String, total: String)
+//}
+
+class ShoppingPage: UIViewController, SummaryProtocol {
+   
+
+    @IBOutlet weak var sumPriceLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+//    var delegate: Sum?
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let sumCalculator = SumCalculator()
     
     var items: [Product]!
     var groupedItems = [[Product]]()
     
     
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
+
         NetworkManager.performURLRequest("https://dummyjson.com/products") { (data: ProductModel)  in
             self.items = data.products
-            print(data.products)
             let dict = Dictionary(grouping: self.items, by: {$0.category})
             let keys = dict.keys
             DispatchQueue.main.async {
                 keys.forEach { self.groupedItems.append(dict[$0]!) }
             }
-            
-          
-            
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         
-        navigationController?.navigationBar.isHidden = true
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
         
     }
     
+     func updateSummary(quantity: String, sum: String) {
+         quantityLabel.text! = quantity
+         sumPriceLabel.text! = sum
+    }
+    
+  
+    
     
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
+        summaryVC.price = sumPriceLabel.text!
+        summaryVC.total = "1234$"
+        
         navigationController?.pushViewController(summaryVC.self, animated: true)
+//        delegate?.summaryUpdate(price: sumPriceLabel.text! + "$", total: "5554$")
     }
     
 }
@@ -61,11 +81,10 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
-     
         cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
         cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
         cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
-        
+        cell.delegate = self
         URLSession.shared.dataTask(with: URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!) { data, response, error in
             if let data = data {
                 DispatchQueue.main.async {
@@ -77,21 +96,12 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.layer.borderWidth = 1
-//        cell.layer.borderColor = UIColor.gray.cgColor
-//        cell.layer.cornerRadius = 10
-////        cell.separatorInset = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
-//    }
-
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
     }
     
-    
 
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         header.backgroundColor = .white
@@ -118,12 +128,6 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         }
         return header
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "asdasdkasjdnasd"
-    }
-    
-
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
