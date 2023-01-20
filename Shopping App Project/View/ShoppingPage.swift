@@ -60,11 +60,18 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
+        summaryVC.imageName = "scr"
+        summaryVC.titleName = "Samsuuuung"
+        summaryVC.quantityName = " 4x"
+        summaryVC.sumName = " 3333$"
+        
+        
+        
         summaryVC.price = sumPriceLabel.text!
         summaryVC.total = "1234$"
         
         navigationController?.pushViewController(summaryVC.self, animated: true)
-//        delegate?.summaryUpdate(price: sumPriceLabel.text! + "$", total: "5554$")
+
     }
     
 }
@@ -106,7 +113,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         header.backgroundColor = .white
         if section == 0 {
-            
+
             let image = UIImageView(image: UIImage(named: "logo"))
             image.contentMode = .scaleAspectFit
             header.addSubview(image)
@@ -117,7 +124,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
             label.text = groupedItems[section][0].category
             label.font = .boldSystemFont(ofSize: 20)
             header.addSubview(label)
-            
+
         }else {
             let label = UILabel(frame: CGRect(x: 5, y: 15,
                                               width: header.frame.size.width - 15,
@@ -134,6 +141,6 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         case 0: return 150
         default: return 110
         }
-        
+
     }
 }
