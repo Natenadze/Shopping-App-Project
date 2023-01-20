@@ -10,27 +10,27 @@ import UIKit
 
 
 protocol SummaryProtocol {
-     func updateSummary(quantity: String, sum: String)
+     func updateSummary(quantity: Int, sum: Int)
 }
 
 class CustomCell: UITableViewCell {
  
     
-    
+//    var sum = SummaryManager.sumManager
     var delegate: SummaryProtocol? = nil
     
-    var quantity: Int = 0
-    var price = 0
-    var delivery = 50
-    
-    var vat: Int {
-         (price * 9) / 100
-    }
-    
-    var totalPrice: String {
-        let sum = delivery  + price
-        return String(sum)
-    }
+//    var quantity: Int = 0
+//    var price = 0
+//
+//
+//    var vat: Int {
+//         (price * 9) / 100
+//    }
+//
+//    var totalPrice: Int {
+//        let sum = price
+//        return sum
+//    }
     
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -41,42 +41,42 @@ class CustomCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
     }
+    
 
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func plusUpdate() {
+        let q = Int(chosenQuantityLabel.text!)!
+        let stock = Int(stockLabel.text!)!
         
+        switch q {
+        case stock: return
+        default: chosenQuantityLabel.text = String(q + 1)
+            delegate?.updateSummary(quantity: 1, sum: Int(priceLabel.text!)!)
+        }
     }
+    func minusUpdate() {
+        let q = Int(chosenQuantityLabel.text!)!
+        
+        switch q {
+        case 0:  return
+        default: chosenQuantityLabel.text = String(q - 1)
+            delegate?.updateSummary(quantity: -1, sum: -Int(priceLabel.text!)!)
+        }
+    }
+
     
     // MARK: - IBActions
     
     
     
     @IBAction func plusPressed(_ sender: UIButton) {
+       plusUpdate()
         
-        let stock = Int(stockLabel.text!)!
-        if quantity < stock {
-            quantity += 1
-            delivery = 50
-            price += Int(priceLabel.text!)!
-            chosenQuantityLabel.text = String(quantity)
-        }
-        delegate?.updateSummary(quantity: "\(quantity)x", sum: totalPrice + "$")
-       
-        
+   
     }
     @IBAction func minusPressed(_ sender: UIButton) {
-       print(delivery)
-        if quantity == 0 {
-            delivery = 0
-        }else {
-            quantity -= 1
-            price -= Int(priceLabel.text!)!
-            chosenQuantityLabel.text = String(quantity)
-        }
-        delegate?.updateSummary(quantity: "\(quantity)x", sum: totalPrice + "$")
-        
+     minusUpdate()
     }
     
     

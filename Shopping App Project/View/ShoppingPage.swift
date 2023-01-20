@@ -12,7 +12,11 @@ import UIKit
 //}
 
 class ShoppingPage: UIViewController, SummaryProtocol {
+    
+    
    
+    
+    var sum = SummaryManager.sumManager
 
     @IBOutlet weak var sumPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
@@ -50,9 +54,13 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         
     }
     
-     func updateSummary(quantity: String, sum: String) {
-         quantityLabel.text! = quantity
-         sumPriceLabel.text! = sum
+     func updateSummary(quantity: Int, sum: Int) {
+         let q = Int(quantityLabel.text!)!
+         let s = Int(sumPriceLabel.text!)!
+         
+         quantityLabel.text = String(q + quantity)
+         sumPriceLabel.text = String(s + sum)
+         
     }
     
   
@@ -61,9 +69,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
         summaryVC.imageName = "scr"
-        summaryVC.titleName = "Samsuuuung"
-        summaryVC.quantityName = " 4x"
-        summaryVC.sumName = " 3333$"
+        summaryVC.titleName = "sum.title[0]"
+        summaryVC.quantityName = String(sum.quantity)
+        summaryVC.sumName = String(sum.price)
         
         
         
@@ -92,23 +100,26 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
         cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
         cell.delegate = self
-        URLSession.shared.dataTask(with: URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!) { data, response, error in
-            if let data = data {
-                DispatchQueue.main.async {
-                    cell.imageView?.image = UIImage(data: data)
-                }
-            }
-        }.resume()
+//        URLSession.shared.dataTask(with: URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!) { data, response, error in
+//            if let data = data {
+//                DispatchQueue.main.async {
+//                    cell.imageView?.image = UIImage(data: data)
+//                }
+//            }
+//        }.resume()
         
         return cell
     }
+    
+    
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
     }
     
-
+    // MARK: - Header info
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         header.backgroundColor = .white
