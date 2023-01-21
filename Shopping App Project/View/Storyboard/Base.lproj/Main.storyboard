@@ -330,7 +330,7 @@
                                             <action selector="payPressed:" destination="cPv-9R-TYF" eventType="touchUpInside" id="GfO-yn-Ecl"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="L5a-IS-dww">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="L5a-IS-dww" userLabel="mainStack">
                                         <rect key="frame" x="10" y="5" width="373" height="150"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7ON-I5-hyo" userLabel="textStack">

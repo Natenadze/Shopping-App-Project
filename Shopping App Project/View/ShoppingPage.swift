@@ -13,9 +13,11 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     @IBOutlet weak var sumPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    //    var delegate: Sum?
+    
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var imageDictionary = [Int: UIImage]()
     
     var finalQuantity: Int! {
         Int(quantityLabel.text!.dropLast(1))!
@@ -28,8 +30,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     var items: [Product]!
     var groupedItems = [[Product]]()
     var sumInfoArray = [SumCellInfo]()
-    
-    var imageDictionary = [Int: UIImage]()
     
     
     override func viewDidLoad() {
@@ -46,13 +46,13 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
     }
     
+   
+
     override func viewDidAppear(_ animated: Bool) {
-        
-        
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
-        
+   
     }
     
     func updateSummary(quantity: Int, sum: Int)  {
@@ -135,17 +135,23 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
+        
         cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
         cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
         cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
         cell.delegate = self
-        URLSession.shared.dataTask(with: URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!) { data, response, error in
-            if let data = data {
-                DispatchQueue.main.async {
-                    cell.imageView?.image = UIImage(data: data)
+        
+        let url = URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!
+        if cell.imageView?.image == nil {
+            URLSession.shared.dataTask(with: url ) { data, response, error in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        cell.imageView?.image = UIImage(data: data)
+                    }
                 }
-            }
-        }.resume()
+            }.resume()
+        }
+      
         
         return cell
     }
