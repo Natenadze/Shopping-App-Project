@@ -19,22 +19,27 @@ class SummaryVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var vatLabel: UILabel!
+    @IBOutlet weak var deliveryLabel: UILabel!
     
     @IBOutlet weak var totalPriceLabel: UILabel!
-    
-    var price = ""
-    var total = ""
-    var imageName = ""
-    var titleName = ""
-    var quantityName = ""
-    var sumName = ""
+ 
+    var calc: Calc?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        priceLabel.text! = price
-        totalPriceLabel.text! = total
+        if let calc {
+            priceLabel.text! = calc.totalPrice + "$"
+            totalPriceLabel.text! = calc.total + "$"
+            vatLabel.text! = calc.vat + "$"
+            deliveryLabel.text = calc.delivery + "$"
+            
+        }
+        
+       
+        
         navigationController?.navigationBar.isHidden = false
         
         tableView.register(UINib(nibName: "SummaryCell", bundle: nil), forCellReuseIdentifier: "sumCell")
@@ -71,10 +76,10 @@ extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sumCell", for: indexPath) as! SummaryCell
-        cell.sumImage.image = UIImage(named: imageName)
-        cell.titleLbl.text = titleName
-        cell.quantityLbl.text = quantityName
-        cell.sumLbl.text = sumName
+//        cell.sumImage.image = UIImage(named: imageName)
+//        cell.titleLbl.text = titleName
+//        cell.quantityLbl.text = quantityName
+//        cell.sumLbl.text = sumName
         
         
         return cell

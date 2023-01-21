@@ -11,12 +11,17 @@ import UIKit
 //    func summaryUpdate(price: String, total: String)
 //}
 
+
+struct Calc {
+    var totalPrice: String
+    var vat : String
+    var delivery: String
+    var total: String
+}
+
 class ShoppingPage: UIViewController, SummaryProtocol {
+
     
-    
-   
-    
-    var sum = SummaryManager.sumManager
 
     @IBOutlet weak var sumPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
@@ -25,7 +30,13 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    let sumCalculator = SumCalculator()
+    var finalQuantity: Int! {
+       Int(quantityLabel.text!.dropLast(1))!
+    }
+    
+    var finalSubTotal: Int! {
+         Int(sumPriceLabel.text!.dropLast(1))!
+    }
     
     var items: [Product]!
     var groupedItems = [[Product]]()
@@ -54,13 +65,23 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         
     }
     
-     func updateSummary(quantity: Int, sum: Int) {
-         let q = Int(quantityLabel.text!)!
-         let s = Int(sumPriceLabel.text!)!
-         
-         quantityLabel.text = String(q + quantity)
-         sumPriceLabel.text = String(s + sum)
-         
+    func updateSummary(quantity: Int, sum: Int)  {
+         quantityLabel.text = String(finalQuantity + quantity) + "x"
+         sumPriceLabel.text = String(finalSubTotal + sum) + "$"
+    }
+    
+    func sumCalc() -> Calc {
+        
+        var vat: Int {
+            Int(Double(finalSubTotal) * 0.21)
+        }
+        let delivery = 50
+        var total: String {
+            String(finalSubTotal! + Int(vat) + delivery)
+        }
+
+
+        return Calc(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
     }
     
   
@@ -68,15 +89,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
-        summaryVC.imageName = "scr"
-        summaryVC.titleName = "sum.title[0]"
-        summaryVC.quantityName = String(sum.quantity)
-        summaryVC.sumName = String(sum.price)
         
+        summaryVC.calc = sumCalc()
         
-        
-        summaryVC.price = sumPriceLabel.text!
-        summaryVC.total = "1234$"
         
         navigationController?.pushViewController(summaryVC.self, animated: true)
 

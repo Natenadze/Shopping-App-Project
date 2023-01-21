@@ -18,7 +18,6 @@
 		5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B9A29748C86001FAF2A /* RegisterVC.swift */; };
 		5D562390297AE86800390A1F /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56238E297AE86800390A1F /* SummaryCell.swift */; };
 		5D562391297AE86800390A1F /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D56238F297AE86800390A1F /* SummaryCell.xib */; };
-		5D562394297B0C0300390A1F /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D562393297B0C0300390A1F /* SummaryManager.swift */; };
 		5D7F2079297991370074BA27 /* SumCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7F2078297991370074BA27 /* SumCalculator.swift */; };
 		5D912B36297579C7002CA421 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D912B35297579C7002CA421 /* GoogleService-Info.plist */; };
 		5D912B38297587C6002CA421 /* ShoppingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B37297587C6002CA421 /* ShoppingPage.swift */; };
@@ -47,7 +46,6 @@
 		5D348B9A29748C86001FAF2A /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		5D56238E297AE86800390A1F /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
 		5D56238F297AE86800390A1F /* SummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
-		5D562393297B0C0300390A1F /* SummaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManager.swift; sourceTree = "<group>"; };
 		5D7F2078297991370074BA27 /* SumCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumCalculator.swift; sourceTree = "<group>"; };
 		5D912B35297579C7002CA421 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D912B37297587C6002CA421 /* ShoppingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPage.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				5D912B462975BA51002CA421 /* ProductModel.swift */,
-				5D562393297B0C0300390A1F /* SummaryManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,7 +278,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D912B782978614B002CA421 /* PaymentErrorVC.swift in Sources */,
-				5D562394297B0C0300390A1F /* SummaryManager.swift in Sources */,
 				5D348B862974768B001FAF2A /* WelcomeViewController.swift in Sources */,
 				5D912B762978610E002CA421 /* ConfirmationVC.swift in Sources */,
 				5D912B74297860CE002CA421 /* SummaryVC.swift in Sources */,

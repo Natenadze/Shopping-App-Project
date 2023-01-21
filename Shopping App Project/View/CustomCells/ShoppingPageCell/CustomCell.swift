@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol SummaryProtocol {
-     func updateSummary(quantity: Int, sum: Int)
+     func updateSummary(quantity: Int, sum: Int) 
 }
 
 class CustomCell: UITableViewCell {
