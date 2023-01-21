@@ -7,41 +7,35 @@
 
 import UIKit
 
-//protocol Sum {
-//    func summaryUpdate(price: String, total: String)
-//}
-
-
-
 
 class ShoppingPage: UIViewController, SummaryProtocol {
-
-    
-
+ 
     @IBOutlet weak var sumPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-//    var delegate: Sum?
+    //    var delegate: Sum?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var finalQuantity: Int! {
-       Int(quantityLabel.text!.dropLast(1))!
+        Int(quantityLabel.text!.dropLast(1))!
     }
     
     var finalSubTotal: Int! {
-         Int(sumPriceLabel.text!.dropLast(1))!
+        Int(sumPriceLabel.text!.dropLast(1))!
     }
     
     var items: [Product]!
     var groupedItems = [[Product]]()
     var sumInfoArray = [SumCellInfo]()
     
+    var imageDictionary = [Int: UIImage]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-
+        
         NetworkManager.performURLRequest("https://dummyjson.com/products") { (data: ProductModel)  in
             self.items = data.products
             let dict = Dictionary(grouping: self.items, by: {$0.category})
@@ -62,9 +56,43 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     }
     
     func updateSummary(quantity: Int, sum: Int)  {
-         quantityLabel.text = String(finalQuantity + quantity) + "x"
-         sumPriceLabel.text = String(finalSubTotal + sum) + "$"
+        quantityLabel.text = String(finalQuantity + quantity) + "x"
+        sumPriceLabel.text = String(finalSubTotal + sum) + "$"
     }
+    
+    func updateSumCellArray(info: SumCellInfo) {
+            if sumInfoArray.isEmpty {
+                sumInfoArray.append(info)
+            }else {
+                var found = false
+                for num in 0..<sumInfoArray.count {
+                    if sumInfoArray[num].title == info.title {
+                        sumInfoArray[num].quantity = String(Int(sumInfoArray[num].quantity)! + 1)
+                        found = true
+                        break
+                    }
+                }
+                if !found {
+                    sumInfoArray.append(info)
+                }
+            }
+        }
+
+    
+    func updateSumCellArray2(info: SumCellInfo) {
+        for num in 0..<sumInfoArray.count {
+            if sumInfoArray[num].title == info.title {
+                if sumInfoArray[num].quantity == "1" {
+                    sumInfoArray.remove(at: num)
+                } else {
+                    sumInfoArray[num].quantity = String(Int(sumInfoArray[num].quantity)! - 1)
+                }
+                break
+            }
+        }
+    }
+
+
     
     func sumCalc() -> Calc {
         
@@ -75,27 +103,22 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         var total: String {
             String(finalSubTotal! + Int(vat) + delivery)
         }
-
-
+        
+        
         return Calc(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
     }
     
-  
+    
     
     
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
-        let asd = SumCellInfo(image: UIImage(named: "logo")!, title: "Samtorola", quantity: "4x", subTotal: "5555$")
-        let asd2 = SumCellInfo(image: UIImage(named: "logo")!, title: "LG", quantity: "2x", subTotal: "444$")
-        let asd3 = SumCellInfo(image: UIImage(named: "logo")!, title: "Nokia", quantity: "1x", subTotal: "333$")
-        sumInfoArray.append(asd)
-        sumInfoArray.append(asd2)
-        sumInfoArray.append(asd3)
+        
         summaryVC.calc = sumCalc()
         summaryVC.cellInfo = sumInfoArray
         
         navigationController?.pushViewController(summaryVC.self, animated: true)
-
+        
     }
     
 }
@@ -116,13 +139,13 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
         cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
         cell.delegate = self
-//        URLSession.shared.dataTask(with: URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!) { data, response, error in
-//            if let data = data {
-//                DispatchQueue.main.async {
-//                    cell.imageView?.image = UIImage(data: data)
-//                }
-//            }
-//        }.resume()
+        URLSession.shared.dataTask(with: URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!) { data, response, error in
+            if let data = data {
+                DispatchQueue.main.async {
+                    cell.imageView?.image = UIImage(data: data)
+                }
+            }
+        }.resume()
         
         return cell
     }
@@ -140,7 +163,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         header.backgroundColor = .white
         if section == 0 {
-
+            
             let image = UIImageView(image: UIImage(named: "logo"))
             image.contentMode = .scaleAspectFit
             header.addSubview(image)
@@ -151,7 +174,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
             label.text = groupedItems[section][0].category
             label.font = .boldSystemFont(ofSize: 20)
             header.addSubview(label)
-
+            
         }else {
             let label = UILabel(frame: CGRect(x: 5, y: 15,
                                               width: header.frame.size.width - 15,
@@ -168,6 +191,6 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         case 0: return 150
         default: return 110
         }
-
+        
     }
 }

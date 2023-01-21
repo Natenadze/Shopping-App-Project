@@ -8,9 +8,9 @@
 import UIKit
 
 class SummaryVC: UIViewController {
-  
     
-   
+    
+    
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
@@ -23,7 +23,7 @@ class SummaryVC: UIViewController {
     @IBOutlet weak var deliveryLabel: UILabel!
     
     @IBOutlet weak var totalPriceLabel: UILabel!
- 
+    
     var calc: Calc?
     var cellInfo: [SumCellInfo]?
     
@@ -39,7 +39,7 @@ class SummaryVC: UIViewController {
             
         }
         
-       
+        
         
         navigationController?.navigationBar.isHidden = false
         
@@ -48,10 +48,10 @@ class SummaryVC: UIViewController {
         tableView.dataSource = self
     }
     
-  
- 
     
-   
+    
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
@@ -61,7 +61,7 @@ class SummaryVC: UIViewController {
         performSegue(withIdentifier: "declined", sender: self)
         
     }
-
+    
 }
 
 
@@ -72,7 +72,7 @@ extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        cellInfo!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +86,7 @@ extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-   
+    
     
     
     

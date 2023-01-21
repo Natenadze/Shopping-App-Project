@@ -10,15 +10,19 @@ import UIKit
 
 
 protocol SummaryProtocol {
-     func updateSummary(quantity: Int, sum: Int) 
+    func updateSummary(quantity: Int, sum: Int)
+    func updateSumCellArray(info: SumCellInfo)
+    func updateSumCellArray2(info: SumCellInfo)
+    
 }
 
 class CustomCell: UITableViewCell {
- 
     
-
+    
+    
     var delegate: SummaryProtocol? = nil
-
+    
+    
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stockLabel: UILabel!
@@ -31,7 +35,7 @@ class CustomCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-
+    
     func plusUpdate() {
         let q = Int(chosenQuantityLabel.text!)!
         let stock = Int(stockLabel.text!)!
@@ -40,6 +44,10 @@ class CustomCell: UITableViewCell {
         case stock: return
         default: chosenQuantityLabel.text = String(q + 1)
             delegate?.updateSummary(quantity: 1, sum: Int(priceLabel.text!)!)
+            delegate?.updateSumCellArray(info: SumCellInfo(image: productImage.image ?? UIImage(named: "logo")!,
+                                                           title: titleLabel.text!,
+                                                           quantity: chosenQuantityLabel.text!,
+                                                           subTotal: priceLabel.text!))
         }
     }
     func minusUpdate() {
@@ -49,21 +57,25 @@ class CustomCell: UITableViewCell {
         case 0:  return
         default: chosenQuantityLabel.text = String(q - 1)
             delegate?.updateSummary(quantity: -1, sum: -Int(priceLabel.text!)!)
+            delegate?.updateSumCellArray2(info: SumCellInfo(image: productImage.image ?? UIImage(named: "logo")!,
+                                                           title: titleLabel.text!,
+                                                           quantity: chosenQuantityLabel.text!,
+                                                           subTotal: priceLabel.text!))
         }
     }
-
+    
     
     // MARK: - IBActions
     
     
     
     @IBAction func plusPressed(_ sender: UIButton) {
-       plusUpdate()
+        plusUpdate()
         
-   
+        
     }
     @IBAction func minusPressed(_ sender: UIButton) {
-     minusUpdate()
+        minusUpdate()
     }
     
     
