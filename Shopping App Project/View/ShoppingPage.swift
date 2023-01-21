@@ -12,12 +12,7 @@ import UIKit
 //}
 
 
-struct Calc {
-    var totalPrice: String
-    var vat : String
-    var delivery: String
-    var total: String
-}
+
 
 class ShoppingPage: UIViewController, SummaryProtocol {
 
@@ -40,6 +35,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     var items: [Product]!
     var groupedItems = [[Product]]()
+    var sumInfoArray = [SumCellInfo]()
     
     
     override func viewDidLoad() {
@@ -89,9 +85,14 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
-        
+        let asd = SumCellInfo(image: UIImage(named: "logo")!, title: "Samtorola", quantity: "4x", subTotal: "5555$")
+        let asd2 = SumCellInfo(image: UIImage(named: "logo")!, title: "LG", quantity: "2x", subTotal: "444$")
+        let asd3 = SumCellInfo(image: UIImage(named: "logo")!, title: "Nokia", quantity: "1x", subTotal: "333$")
+        sumInfoArray.append(asd)
+        sumInfoArray.append(asd2)
+        sumInfoArray.append(asd3)
         summaryVC.calc = sumCalc()
-        
+        summaryVC.cellInfo = sumInfoArray
         
         navigationController?.pushViewController(summaryVC.self, animated: true)
 

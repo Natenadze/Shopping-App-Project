@@ -25,6 +25,7 @@ class SummaryVC: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
  
     var calc: Calc?
+    var cellInfo: [SumCellInfo]?
     
     
     
@@ -76,10 +77,10 @@ extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sumCell", for: indexPath) as! SummaryCell
-//        cell.sumImage.image = UIImage(named: imageName)
-//        cell.titleLbl.text = titleName
-//        cell.quantityLbl.text = quantityName
-//        cell.sumLbl.text = sumName
+        cell.sumImage.image = cellInfo?[indexPath.row].image
+        cell.titleLbl.text = cellInfo?[indexPath.row].title
+        cell.quantityLbl.text = cellInfo?[indexPath.row].quantity
+        cell.sumLbl.text = cellInfo?[indexPath.row].subTotal
         
         
         return cell

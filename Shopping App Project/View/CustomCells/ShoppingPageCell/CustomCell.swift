@@ -16,22 +16,9 @@ protocol SummaryProtocol {
 class CustomCell: UITableViewCell {
  
     
-//    var sum = SummaryManager.sumManager
+
     var delegate: SummaryProtocol? = nil
-    
-//    var quantity: Int = 0
-//    var price = 0
-//
-//
-//    var vat: Int {
-//         (price * 9) / 100
-//    }
-//
-//    var totalPrice: Int {
-//        let sum = price
-//        return sum
-//    }
-    
+
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stockLabel: UILabel!

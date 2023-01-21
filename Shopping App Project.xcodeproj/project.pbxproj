@@ -18,6 +18,8 @@
 		5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D348B9A29748C86001FAF2A /* RegisterVC.swift */; };
 		5D562390297AE86800390A1F /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56238E297AE86800390A1F /* SummaryCell.swift */; };
 		5D562391297AE86800390A1F /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D56238F297AE86800390A1F /* SummaryCell.xib */; };
+		5D562396297C39F000390A1F /* SumCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D562395297C39F000390A1F /* SumCellInfo.swift */; };
+		5D562398297C3A1F00390A1F /* Calc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D562397297C3A1F00390A1F /* Calc.swift */; };
 		5D7F2079297991370074BA27 /* SumCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7F2078297991370074BA27 /* SumCalculator.swift */; };
 		5D912B36297579C7002CA421 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D912B35297579C7002CA421 /* GoogleService-Info.plist */; };
 		5D912B38297587C6002CA421 /* ShoppingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D912B37297587C6002CA421 /* ShoppingPage.swift */; };
@@ -46,6 +48,8 @@
 		5D348B9A29748C86001FAF2A /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		5D56238E297AE86800390A1F /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
 		5D56238F297AE86800390A1F /* SummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
+		5D562395297C39F000390A1F /* SumCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumCellInfo.swift; sourceTree = "<group>"; };
+		5D562397297C3A1F00390A1F /* Calc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calc.swift; sourceTree = "<group>"; };
 		5D7F2078297991370074BA27 /* SumCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumCalculator.swift; sourceTree = "<group>"; };
 		5D912B35297579C7002CA421 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D912B37297587C6002CA421 /* ShoppingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPage.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				5D912B462975BA51002CA421 /* ProductModel.swift */,
+				5D562395297C39F000390A1F /* SumCellInfo.swift */,
+				5D562397297C3A1F00390A1F /* Calc.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,7 +293,9 @@
 				5D912B492976C0C1002CA421 /* NetworkManager.swift in Sources */,
 				5D912B412975AECA002CA421 /* CustomCell.swift in Sources */,
 				5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */,
+				5D562398297C3A1F00390A1F /* Calc.swift in Sources */,
 				5D562390297AE86800390A1F /* SummaryCell.swift in Sources */,
+				5D562396297C39F000390A1F /* SumCellInfo.swift in Sources */,
 				5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */,
 				5D912B3A297594E6002CA421 /* Animations.swift in Sources */,
 				5D7F2079297991370074BA27 /* SumCalculator.swift in Sources */,
