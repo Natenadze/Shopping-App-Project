@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol SummaryProtocol {
-    func updateSummary(quantity: Int, sum: Int)
+    func updateSummary(quantity: Int, sum: Int, title: String)
     func updateSumCellArrayPlusAction(info: SumCellInfo)
     func updateSumCellArrayMinusAction(info: SumCellInfo)
     
@@ -47,7 +47,7 @@ class CustomCell: UITableViewCell {
         default:
             chosenQuantityLabel.text = String(q)
             let sum = Int(priceLabel.text!)! * q
-            delegate?.updateSummary(quantity: 1, sum: Int(priceLabel.text!)!)
+            delegate?.updateSummary(quantity: 1, sum: Int(priceLabel.text!)!, title: titleLabel.text!)
             delegate?.updateSumCellArrayPlusAction(info: SumCellInfo(image: productImage.image ?? UIImage(named: "scr")!,
                                                                      title: titleLabel.text!,
                                                                      quantity: chosenQuantityLabel.text!,
@@ -64,7 +64,7 @@ class CustomCell: UITableViewCell {
             return
         default:
             chosenQuantityLabel.text = String(q - 1)
-            delegate?.updateSummary(quantity: -1, sum: -Int(priceLabel.text!)!)
+            delegate?.updateSummary(quantity: -1, sum: -Int(priceLabel.text!)!, title: titleLabel.text!)
             delegate?.updateSumCellArrayMinusAction(info: SumCellInfo(image: productImage.image ?? UIImage(named: "scr")!,
                                                                       title: titleLabel.text!,
                                                                       quantity: chosenQuantityLabel.text!,

@@ -12,11 +12,13 @@ struct ProductModel: Codable {
 }
 
 
-struct Product: Codable {
+class Product: Codable {
     var title: String
     var price: Int
     var stock: Int
     var brand: String
     var category: String
     var thumbnail: String
+    var choosenQuantity: Int? = 0
+    
 }
