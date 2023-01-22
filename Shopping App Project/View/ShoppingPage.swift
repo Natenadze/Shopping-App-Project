@@ -60,7 +60,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         sumPriceLabel.text = String(finalSubTotal + sum) + "$"
     }
     
-    func updateSumCellArray(info: SumCellInfo) {
+    func updateSumCellArrayPlusAction(info: SumCellInfo) {
             if sumInfoArray.isEmpty {
                 sumInfoArray.append(info)
             }else {
@@ -68,6 +68,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                 for num in 0..<sumInfoArray.count {
                     if sumInfoArray[num].title == info.title {
                         sumInfoArray[num].quantity = String(Int(sumInfoArray[num].quantity)! + 1)
+                        sumInfoArray[num].subTotal = info.subTotal
                         found = true
                         break
                     }
@@ -79,18 +80,20 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
 
     
-    func updateSumCellArray2(info: SumCellInfo) {
+    func updateSumCellArrayMinusAction(info: SumCellInfo) {
         for num in 0..<sumInfoArray.count {
             if sumInfoArray[num].title == info.title {
                 if sumInfoArray[num].quantity == "1" {
                     sumInfoArray.remove(at: num)
                 } else {
                     sumInfoArray[num].quantity = String(Int(sumInfoArray[num].quantity)! - 1)
+                    sumInfoArray[num].subTotal = String(Int(sumInfoArray[num].subTotal)! - Int(info.subTotal)!)
                 }
                 break
             }
         }
     }
+
 
 
     
@@ -129,8 +132,11 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return groupedItems[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        120
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -142,7 +148,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         cell.delegate = self
         
         let url = URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!
-        if cell.imageView?.image == nil {
+//        if cell.imageView?.image == nil {
             URLSession.shared.dataTask(with: url ) { data, response, error in
                 if let data = data {
                     DispatchQueue.main.async {
@@ -150,18 +156,12 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
                     }
                 }
             }.resume()
-        }
+//        }
       
-        
         return cell
     }
     
     
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        120
-    }
     
     // MARK: - Header info
     

@@ -36,23 +36,15 @@ class SummaryVC: UIViewController {
             totalPriceLabel.text! = calc.total + "$"
             vatLabel.text! = calc.vat + "$"
             deliveryLabel.text = calc.delivery + "$"
-            
         }
-        
-        
-        
+
         navigationController?.navigationBar.isHidden = false
         
         tableView.register(UINib(nibName: "SummaryCell", bundle: nil), forCellReuseIdentifier: "sumCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-    
-    
-    
-    
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
