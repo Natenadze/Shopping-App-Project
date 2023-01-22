@@ -17,6 +17,8 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    
+    
     var imageDictionary = [Int: UIImage]()
     
     var finalQuantity: Int! {
@@ -36,10 +38,12 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         
+        
+        
         NetworkManager.performURLRequest("https://dummyjson.com/products") { (data: ProductModel)  in
             self.items = data.products
             let dict = Dictionary(grouping: self.items, by: {$0.category})
-            let keys = dict.keys
+            let keys = dict.keys.sorted()
             DispatchQueue.main.async {
                 keys.forEach { self.groupedItems.append(dict[$0]!) }
             }
@@ -54,6 +58,8 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         tableView.dataSource = self
    
     }
+    
+    
     
     func updateSummary(quantity: Int, sum: Int)  {
         quantityLabel.text = String(finalQuantity + quantity) + "x"
@@ -148,15 +154,19 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         cell.delegate = self
         
         let url = URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!
-//        if cell.imageView?.image == nil {
-            URLSession.shared.dataTask(with: url ) { data, response, error in
+
+           let task =  URLSession.shared.dataTask(with: url ) { data, response, error in
                 if let data = data {
                     DispatchQueue.main.async {
-                        cell.imageView?.image = UIImage(data: data)
+                        cell.productImage.image = UIImage(data: data)
                     }
                 }
-            }.resume()
-//        }
+            }
+        task.resume()
+        cell.cancelTask = {
+            task.cancel()
+        }
+
       
         return cell
     }
