@@ -34,29 +34,39 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     var sumInfoArray = [SumCellInfo]()
     
     
+    // Saving data to UserDefaults
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        
-        
-        
-        NetworkManager.performURLRequest("https://dummyjson.com/products") { (data: ProductModel)  in
-            self.items = data.products
-            let dict = Dictionary(grouping: self.items, by: {$0.category})
-            let keys = dict.keys.sorted()
-            DispatchQueue.main.async {
-                keys.forEach { item in
-                    dict[item]?.forEach({ Product in
-                        Product.choosenQuantity = 0
-                    })
-                    self.groupedItems.append(dict[item]!)
+
+        if let savedData = UserDefaults.standard.data(forKey: "products") {
+            print("datacomes from the defaults")
+            do {
+                let decoder = JSONDecoder()
+                let products = try decoder.decode([Product].self, from: savedData)
+                self.items = products
+                updateGroupedItems()
+            } catch {
+                print("Error decoding products from UserDefaults: \(error)")
+            }
+        } else {
+            print("datacomes from the internet")
+            NetworkManager.performURLRequest("https://dummyjson.com/products") { (data: ProductModel)  in
+                self.items = data.products
+                do {
+                    let encoder = JSONEncoder()
+                    let encodedData = try encoder.encode(self.items)
+                    UserDefaults.standard.set(encodedData, forKey: "products")
+                } catch {
+                    print("Error encoding products to save to UserDefaults: \(error)")
                 }
+                self.updateGroupedItems()
             }
         }
     }
     
-    
-    
+  
+
     override func viewDidAppear(_ animated: Bool) {
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.delegate = self
@@ -64,7 +74,18 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         
     }
     
-    
+    func updateGroupedItems() {
+        let dict = Dictionary(grouping: self.items, by: {$0.category})
+        let keys = dict.keys.sorted()
+        DispatchQueue.main.async {
+            keys.forEach { item in
+                dict[item]?.forEach({ Product in
+                    Product.choosenQuantity = 0
+                })
+                self.groupedItems.append(dict[item]!)
+            }
+        }
+    }
     
     func updateSummary(quantity: Int, sum: Int, title: String)  {
         quantityLabel.text = String(finalQuantity + quantity) + "x"
