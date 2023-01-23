@@ -148,6 +148,8 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         return Calc(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
     }
     
+    @IBAction func unwindToShoppingVC(_ sender: UIStoryboardSegue) {}
+    
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
         
