@@ -9,28 +9,23 @@ import UIKit
 
 class SummaryVC: UIViewController {
     
-    
-    
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var itemTotalPrice: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var vatLabel: UILabel!
     @IBOutlet weak var deliveryLabel: UILabel!
-    
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     var calc: Calc?
     var cellInfo: [SumCellInfo]?
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Payment page"
+
         if let calc {
             priceLabel.text! = calc.totalPrice + "$"
             totalPriceLabel.text! = calc.total + "$"
@@ -56,12 +51,8 @@ class SummaryVC: UIViewController {
         }else {
             performSegue(withIdentifier: "success", sender: self)
         }
-        
-        
     }
-    
 }
-
 
 extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
     
@@ -79,13 +70,7 @@ extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
         cell.titleLbl.text = cellInfo?[indexPath.row].title
         cell.quantityLbl.text = cellInfo?[indexPath.row].quantity
         cell.sumLbl.text = cellInfo?[indexPath.row].subTotal
-        
-        
         return cell
     }
-    
-    
-    
-    
-    
+ 
 }
