@@ -50,7 +50,13 @@ class SummaryVC: UIViewController {
     }
     
     @IBAction func payPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "declined", sender: self)
+        let price = Int(priceLabel.text!.dropLast(1))!
+        if price > 3000 {
+            performSegue(withIdentifier: "declined", sender: self)
+        }else {
+            performSegue(withIdentifier: "success", sender: self)
+        }
+        
         
     }
     

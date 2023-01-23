@@ -117,7 +117,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="4wK-ra-eBp">
-                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333348" height="211.99999999999997"/>
+                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333337" height="211.99999999999997"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -436,10 +436,10 @@
             </objects>
             <point key="canvasLocation" x="2938.1679389312976" y="436.61971830985919"/>
         </scene>
-        <!--Payment ErrorVC-->
+        <!--ConfirmationVC-->
         <scene sceneID="TJS-bb-08z">
             <objects>
-                <viewController storyboardIdentifier="paymentDeclinedVC" id="7g9-sP-urL" customClass="PaymentErrorVC" customModule="Shopping_App_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="paymentDeclinedVC" id="7g9-sP-urL" customClass="ConfirmationVC" customModule="Shopping_App_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Tn-8S-0RO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,6 +452,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Done!"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="7g9-sP-urL" eventType="touchUpInside" id="OBO-os-QoC"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirm" translatesAutoresizingMaskIntoConstraints="NO" id="514-I8-w0W">
                                 <rect key="frame" x="96.666666666666686" y="241.66666666666663" width="200" height="200"/>
@@ -490,10 +493,10 @@
             </objects>
             <point key="canvasLocation" x="3958" y="732"/>
         </scene>
-        <!--ConfirmationVC-->
+        <!--Payment ErrorVC-->
         <scene sceneID="sFT-ZR-OuG">
             <objects>
-                <viewController storyboardIdentifier="paymentConfirmedVC" id="3EX-yJ-5d4" customClass="ConfirmationVC" customModule="Shopping_App_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="paymentConfirmedVC" id="3EX-yJ-5d4" customClass="PaymentErrorVC" customModule="Shopping_App_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mar-le-g7T">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -505,7 +508,10 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="e11-QT-Zxf"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Go back"/>
+                                <connections>
+                                    <action selector="goBackPressed:" destination="3EX-yJ-5d4" eventType="touchUpInside" id="p0x-oz-vj1"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="decline" translatesAutoresizingMaskIntoConstraints="NO" id="6bm-yS-jbc">
                                 <rect key="frame" x="96.666666666666686" y="241.66666666666663" width="200" height="200"/>
@@ -578,7 +584,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-Ra-2tL">
-                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333348" height="211.99999999999997"/>
+                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333337" height="211.99999999999997"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

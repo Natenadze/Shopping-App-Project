@@ -12,9 +12,15 @@ class ConfirmationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
+    
+    
+    
+    @IBAction func donePressed(_ sender: UIButton) {
+        
+    }
 
     /*
     // MARK: - Navigation
