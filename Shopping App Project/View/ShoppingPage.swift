@@ -13,32 +13,24 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     @IBOutlet weak var sumPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var goToSumBtn: UIButton!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
-    
-    var imageDictionary = [Int: UIImage]()
-    
-    var finalQuantity: Int! {
-        Int(quantityLabel.text!.dropLast(1))!
-    }
-    
-    var finalSubTotal: Int! {
-        Int(sumPriceLabel.text!.dropLast(1))!
-    }
     
     var items: [Product]!
     var groupedItems = [[Product]]()
     var sumInfoArray = [SumCellInfo]()
     
+    var imageDictionary = [Int: UIImage]()
+    var finalQuantity: Int! { Int(quantityLabel.text!.dropLast(1))! }
+    var finalSubTotal: Int! { Int(sumPriceLabel.text!.dropLast(1))! }
+ 
     
     // Saving data to UserDefaults
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-
+        goToSumBtn.isEnabled = false
         if let savedData = UserDefaults.standard.data(forKey: "products") {
             print("datacomes from the defaults")
             do {
@@ -100,6 +92,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     }
     
     func updateSumCellArrayPlusAction(info: SumCellInfo) {
+        goToSumBtn.isEnabled = true
         if sumInfoArray.isEmpty {
             sumInfoArray.append(info)
         }else {
@@ -120,6 +113,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     
     func updateSumCellArrayMinusAction(info: SumCellInfo) {
+        
         for num in 0..<sumInfoArray.count {
             if sumInfoArray[num].title == info.title {
                 if sumInfoArray[num].quantity == "1" {
@@ -130,6 +124,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                 }
                 break
             }
+        }
+        if sumInfoArray.isEmpty {
+            goToSumBtn.isEnabled = false
         }
     }
     
@@ -148,19 +145,28 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         return Calc(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
     }
     
-    @IBAction func unwindToShoppingVC(_ sender: UIStoryboardSegue) {}
+//    func saveSumInfoArrayToUserDefaults() {
+//        let encodedData = try? JSONEncoder().encode(sumInfoArray)
+//        UserDefaults.standard.set(encodedData, forKey: "sumInfoArray")
+//    }
+
+    
+   
     
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
-        
         summaryVC.calc = sumCalc()
         summaryVC.cellInfo = sumInfoArray
-        
         navigationController?.pushViewController(summaryVC.self, animated: true)
-        
+    }
+    
+    @IBAction func unwindToShoppingVC(_ sender: UIStoryboardSegue) {
+        self.dismiss(animated: false)
     }
     
 }
+
+// MARK: - Extension
 
 extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {

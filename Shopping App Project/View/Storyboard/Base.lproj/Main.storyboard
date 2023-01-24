@@ -295,6 +295,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="goToSumBtn" destination="ROg-Zj-EY3" id="7fo-rC-LDe"/>
                         <outlet property="quantityLabel" destination="uW8-ID-luE" id="wWw-gy-oYI"/>
                         <outlet property="sumPriceLabel" destination="ZK9-xf-Ljp" id="qEz-jR-NaQ"/>
                         <outlet property="tableView" destination="d4n-G3-Bxj" id="U9d-br-fgw"/>
