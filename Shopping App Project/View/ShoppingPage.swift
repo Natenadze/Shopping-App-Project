@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 class ShoppingPage: UIViewController, SummaryProtocol {
@@ -144,13 +145,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         
         return Calc(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
     }
-    
-//    func saveSumInfoArrayToUserDefaults() {
-//        let encodedData = try? JSONEncoder().encode(sumInfoArray)
-//        UserDefaults.standard.set(encodedData, forKey: "sumInfoArray")
-//    }
 
-    
    
     
     @IBAction func goToSummary(_ sender: UIButton) {
@@ -182,31 +177,22 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
-        
-        cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
-        cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
-        cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
-        cell.chosenQuantityLabel.text = String(groupedItems[indexPath.section][indexPath.row].choosenQuantity!)
-        cell.delegate = self
-        
-        let url = URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!
-        
-        let task =  URLSession.shared.dataTask(with: url ) { data, response, error in
-            if let data = data {
-                DispatchQueue.main.async {
-                    cell.productImage.image = UIImage(data: data)
-                }
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
+            
+            cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
+            cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
+            cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
+            cell.chosenQuantityLabel.text = String(groupedItems[indexPath.section][indexPath.row].choosenQuantity!)
+            cell.delegate = self
+            
+            let url = URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!
+            
+            // Use Kingfisher to load and cache the image
+            cell.productImage.kf.setImage(with: url)
+            
+            return cell
         }
-        task.resume()
-        cell.cancelTask = {
-            task.cancel()
-        }
-        
-        
-        return cell
-    }
+
     
     
     
