@@ -25,7 +25,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     var imageDictionary = [Int: UIImage]()
     var finalQuantity: Int! { Int(quantityLabel.text!.dropLast(1))! }
     var finalSubTotal: Int! { Int(sumPriceLabel.text!.dropLast(1))! }
- 
+    
     
     // Saving data to UserDefaults
     override func viewDidLoad() {
@@ -58,13 +58,28 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
     }
     
-  
-
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
         
+    }
+    
+    func sumCalc() -> Calc {
+        var vat: Int {
+            Int(Double(finalSubTotal) * 0.21)
+        }
+        var delivery = 50
+        if vat == 0 {
+            delivery = 0
+        }
+        var total: String {
+            String(finalSubTotal! + Int(vat) + delivery)
+        }
+        
+        return Calc(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
     }
     
     func updateGroupedItems() {
@@ -79,6 +94,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             }
         }
     }
+    
+    
+    // MARK: - Delegate Functions
     
     func updateSummary(quantity: Int, sum: Int, title: String)  {
         quantityLabel.text = String(finalQuantity + quantity) + "x"
@@ -98,6 +116,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             sumInfoArray.append(info)
         }else {
             var found = false
+            
             for num in 0..<sumInfoArray.count {
                 if sumInfoArray[num].title == info.title {
                     sumInfoArray[num].quantity = String(Int(sumInfoArray[num].quantity)! + 1)
@@ -131,22 +150,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
     }
     
-    func sumCalc() -> Calc {
-        var vat: Int {
-            Int(Double(finalSubTotal) * 0.21)
-        }
-        var delivery = 50
-        if vat == 0 {
-            delivery = 0
-        }
-        var total: String {
-            String(finalSubTotal! + Int(vat) + delivery)
-        }
-        
-        return Calc(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
-    }
-
-   
+    
+    
+    
     
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
@@ -177,22 +183,21 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
-            
-            cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
-            cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
-            cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
-            cell.chosenQuantityLabel.text = String(groupedItems[indexPath.section][indexPath.row].choosenQuantity!)
-            cell.delegate = self
-            
-            let url = URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!
-            
-            // Use Kingfisher to load and cache the image
-            cell.productImage.kf.setImage(with: url)
-            
-            return cell
-        }
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
+        
+        cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
+        cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
+        cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
+        cell.chosenQuantityLabel.text = String(groupedItems[indexPath.section][indexPath.row].choosenQuantity!)
+        cell.imageURL = groupedItems[indexPath.section][indexPath.row].thumbnail
+        cell.delegate = self
+        
+        let url = URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!
+        cell.productImage.kf.setImage(with: url)
+        
+        return cell
+    }
+    
     
     
     

@@ -11,7 +11,7 @@ import UIKit
 
 
 struct SumCellInfo {
-    var image: UIImage
+    var image: String
     var title: String
     var quantity: String
     var subTotal: String

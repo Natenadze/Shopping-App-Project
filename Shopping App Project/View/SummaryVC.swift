@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SummaryVC: UIViewController {
     
@@ -66,7 +67,10 @@ extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sumCell", for: indexPath) as! SummaryCell
-        cell.sumImage.image = cellInfo?[indexPath.row].image
+        let url = URL(string: (cellInfo?[indexPath.row].image)!)
+        
+       
+        cell.sumImage.kf.setImage(with: url)
         cell.titleLbl.text = cellInfo?[indexPath.row].title
         cell.quantityLbl.text = cellInfo?[indexPath.row].quantity
         cell.sumLbl.text = cellInfo?[indexPath.row].subTotal

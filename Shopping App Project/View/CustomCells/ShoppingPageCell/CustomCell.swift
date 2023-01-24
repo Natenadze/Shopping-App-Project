@@ -20,6 +20,7 @@ class CustomCell: UITableViewCell {
     
     var delegate: SummaryProtocol? = nil
     var cancelTask: (() -> Void)?
+    var imageURL: String = ""
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stockLabel: UILabel!
@@ -48,7 +49,7 @@ class CustomCell: UITableViewCell {
             chosenQuantityLabel.text = String(q)
             let sum = Int(priceLabel.text!)! * q
             delegate?.updateSummary(quantity: 1, sum: Int(priceLabel.text!)!, title: titleLabel.text!)
-            delegate?.updateSumCellArrayPlusAction(info: SumCellInfo(image: productImage.image ?? UIImage(named: "scr")!,
+            delegate?.updateSumCellArrayPlusAction(info: SumCellInfo(image: imageURL,
                                                                      title: titleLabel.text!,
                                                                      quantity: chosenQuantityLabel.text!,
                                                                      subTotal: String(sum))
@@ -65,7 +66,7 @@ class CustomCell: UITableViewCell {
         default:
             chosenQuantityLabel.text = String(q - 1)
             delegate?.updateSummary(quantity: -1, sum: -Int(priceLabel.text!)!, title: titleLabel.text!)
-            delegate?.updateSumCellArrayMinusAction(info: SumCellInfo(image: productImage.image ?? UIImage(named: "scr")!,
+            delegate?.updateSumCellArrayMinusAction(info: SumCellInfo(image: "",
                                                                       title: titleLabel.text!,
                                                                       quantity: chosenQuantityLabel.text!,
                                                                       subTotal: priceLabel.text!))
