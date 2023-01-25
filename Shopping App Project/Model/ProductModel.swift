@@ -19,6 +19,9 @@ class Product: Codable {
     var brand: String
     var category: String
     var thumbnail: String
-    var choosenQuantity: Int? = 0
+    var choosenQuantity: Int! = 0
+    var remainingQuantity: Int! {
+            stock - choosenQuantity
+    }
     
 }

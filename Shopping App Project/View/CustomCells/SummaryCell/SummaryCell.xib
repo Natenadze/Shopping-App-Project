@@ -36,7 +36,7 @@
                         <rect key="frame" x="115" y="62" width="20" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="BIu-8H-1WT"/>
-                            <constraint firstAttribute="width" constant="20" id="bSY-l2-aj6"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="bSY-l2-aj6"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>

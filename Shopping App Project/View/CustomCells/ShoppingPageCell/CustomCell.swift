@@ -43,15 +43,16 @@ class CustomCell: UITableViewCell {
         let stock = Int(stockLabel.text!)!
         
         switch q {
-        case stock:
+        case stock + 1:
             return
         default:
-            chosenQuantityLabel.text = String(q)
             let sum = Int(priceLabel.text!)! * q
+            // 1.
             delegate?.updateSummary(quantity: 1, sum: Int(priceLabel.text!)!, title: titleLabel.text!)
+            //2.
             delegate?.updateSumCellArrayPlusAction(info: SumCellInfo(image: imageURL,
                                                                      title: titleLabel.text!,
-                                                                     quantity: chosenQuantityLabel.text!,
+                                                                     quantity: String(q),
                                                                      subTotal: String(sum))
             )
         }
@@ -64,8 +65,9 @@ class CustomCell: UITableViewCell {
         case 0:
             return
         default:
-            chosenQuantityLabel.text = String(q - 1)
+            // 1.
             delegate?.updateSummary(quantity: -1, sum: -Int(priceLabel.text!)!, title: titleLabel.text!)
+            // 2.
             delegate?.updateSumCellArrayMinusAction(info: SumCellInfo(image: "",
                                                                       title: titleLabel.text!,
                                                                       quantity: chosenQuantityLabel.text!,

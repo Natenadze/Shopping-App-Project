@@ -35,8 +35,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         if let savedData = UserDefaults.standard.data(forKey: "products") {
             print("datacomes from the defaults")
             do {
-                let decoder = JSONDecoder()
-                let products = try decoder.decode([Product].self, from: savedData)
+                let products = try JSONDecoder().decode([Product].self, from: savedData)
                 self.items = products
                 updateGroupedItems()
             } catch {
@@ -47,8 +46,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             NetworkManager.performURLRequest("https://dummyjson.com/products") { (data: ProductModel)  in
                 self.items = data.products
                 do {
-                    let encoder = JSONEncoder()
-                    let encodedData = try encoder.encode(self.items)
+                    let encodedData = try JSONEncoder().encode(self.items)
                     UserDefaults.standard.set(encodedData, forKey: "products")
                 } catch {
                     print("Error encoding products to save to UserDefaults: \(error)")
@@ -57,7 +55,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             }
         }
     }
-    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -112,6 +109,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     func updateSumCellArrayPlusAction(info: SumCellInfo) {
         goToSumBtn.isEnabled = true
+        
         if sumInfoArray.isEmpty {
             sumInfoArray.append(info)
         }else {
@@ -129,6 +127,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                 sumInfoArray.append(info)
             }
         }
+        tableView.reloadData()  // reload when payment is done?
     }
     
     
@@ -148,6 +147,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         if sumInfoArray.isEmpty {
             goToSumBtn.isEnabled = false
         }
+        tableView.reloadData()
     }
     
     
@@ -184,15 +184,16 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
+        let currentItem = groupedItems[indexPath.section][indexPath.row]
         
-        cell.titleLabel.text = groupedItems[indexPath.section][indexPath.row].title
-        cell.stockLabel.text = String(groupedItems[indexPath.section][indexPath.row].stock)
-        cell.priceLabel.text = String(groupedItems[indexPath.section][indexPath.row].price)
-        cell.chosenQuantityLabel.text = String(groupedItems[indexPath.section][indexPath.row].choosenQuantity!)
-        cell.imageURL = groupedItems[indexPath.section][indexPath.row].thumbnail
+        cell.titleLabel.text = currentItem.title
+        cell.stockLabel.text = String(currentItem.remainingQuantity)
+        cell.priceLabel.text = String(currentItem.price)
+        cell.chosenQuantityLabel.text = String(currentItem.choosenQuantity!)
+        cell.imageURL = currentItem.thumbnail
         cell.delegate = self
         
-        let url = URL(string: groupedItems[indexPath.section][indexPath.row].thumbnail)!
+        let url = URL(string: currentItem.thumbnail)!
         cell.productImage.kf.setImage(with: url)
         
         return cell
