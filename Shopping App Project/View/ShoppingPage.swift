@@ -21,17 +21,25 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     var items: [Product]!
     var groupedItems = [[Product]]()
     var sumInfoArray = [SumCellInfo]()
+    var sumCalculation: Calc?
     
     var imageDictionary = [Int: UIImage]()
     var finalQuantity: Int! { Int(quantityLabel.text!.dropLast(1))! }
     var finalSubTotal: Int! { Int(sumPriceLabel.text!.dropLast(1))! }
     
     
-    // Saving data to UserDefaults
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        goToSumBtn.isEnabled = false
+//        goToSumBtn.isEnabled = false
+        sumInfoArray =  UserDefaults.standard.busket ?? sumInfoArray
+        if let result = UserDefaults.standard.summary {
+            sumCalculation = result
+        }
+       
+        
+        
         if let savedData = UserDefaults.standard.data(forKey: "products") {
             print("datacomes from the defaults")
             do {
@@ -64,9 +72,12 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         
     }
     
+    
+  
+    
     func sumCalc() -> Calc {
         var vat: Int {
-            Int(Double(finalSubTotal) * 0.21)
+            Int(Double(finalSubTotal!) * 0.21)
         }
         var delivery = 50
         if vat == 0 {
@@ -107,11 +118,14 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
     }
     
+    
+    
     func updateSumCellArrayPlusAction(info: SumCellInfo) {
         goToSumBtn.isEnabled = true
         
         if sumInfoArray.isEmpty {
             sumInfoArray.append(info)
+            
         }else {
             var found = false
             
@@ -127,6 +141,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                 sumInfoArray.append(info)
             }
         }
+        UserDefaults.standard.busket = sumInfoArray
         tableView.reloadData()  // reload when payment is done?
     }
     
@@ -147,6 +162,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         if sumInfoArray.isEmpty {
             goToSumBtn.isEnabled = false
         }
+        UserDefaults.standard.busket = sumInfoArray
         tableView.reloadData()
     }
     
@@ -156,7 +172,12 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     @IBAction func goToSummary(_ sender: UIButton) {
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
-        summaryVC.calc = sumCalc()
+        if finalSubTotal! != 0 {
+            sumCalculation = sumCalc()
+            summaryVC.calc = sumCalculation
+            UserDefaults.standard.summary = sumCalculation
+        }
+        
         summaryVC.cellInfo = sumInfoArray
         navigationController?.pushViewController(summaryVC.self, animated: true)
     }

@@ -26,7 +26,10 @@ class SummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Payment page"
-
+        if let s = UserDefaults.standard.summary {
+            calc = s
+        }
+        
         if let calc {
             priceLabel.text! = calc.totalPrice + "$"
             totalPriceLabel.text! = calc.total + "$"
