@@ -20,6 +20,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     var items: [Product]!
     var groupedItems = [[Product]]()
+    
     var sumInfoArray = [SumCellInfo]()
     var sumCalculation: Calc?
     
@@ -38,8 +39,24 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             sumCalculation = result
         }
        
-        
-        
+        if let asd = UserDefaults.standard.grr {
+            print("ariqaaaaaaa vashaaa")
+            groupedItems = asd
+            sumPriceLabel.text = sumCalculation!.total + "$"
+            var a = 0
+            for i in 0..<sumInfoArray.count {
+                a += Int(sumInfoArray[i].quantity)!
+            }
+            quantityLabel.text = String(a) + "x"
+        }else {
+            print("isev sawvalebelia")
+            fillMainData()
+        }
+         
+ 
+    }
+    
+    func fillMainData() {
         if let savedData = UserDefaults.standard.data(forKey: "products") {
             print("datacomes from the defaults")
             do {
@@ -171,6 +188,8 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     
     @IBAction func goToSummary(_ sender: UIButton) {
+        
+        UserDefaults.standard.grr = groupedItems
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
         if finalSubTotal! != 0 {
             sumCalculation = sumCalc()

@@ -41,5 +41,20 @@ extension UserDefaults {
        
     }
     
+    var grr: [[Product]]? {
+        get {
+            if let data = object(forKey: "test3") as? Data {
+                let result = try? JSONDecoder().decode([[Product]].self, from: data)
+                return result
+            }
+            return nil
+        }
+        set {
+            let data = try? JSONEncoder().encode(newValue)
+            setValue(data, forKey: "test3")
+        }
+       
+    }
+    
  
 }
