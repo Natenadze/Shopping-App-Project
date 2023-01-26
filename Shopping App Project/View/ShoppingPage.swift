@@ -11,16 +11,7 @@ import Kingfisher
 
 class ShoppingPage: UIViewController, SummaryProtocol {
     
-    
-  
-    
-    func updateSumCellArrayMinusAction(info: SumCellInfo) {
-        print(2)
-    }
-    
-    
-    
-    
+
     @IBOutlet weak var sumPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -35,8 +26,8 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     var sumCalculation: Calc?
     
     var imageDictionary = [Int: UIImage]()
-    var finalQuantity: Int! { Int(quantityLabel.text!) ?? 0 }
-    var finalSubTotal: Int! { Int(sumPriceLabel.text!.dropLast(1))! }
+    var finalQuantity = 0
+    var finalSubTotal: Int! { Int(sumPriceLabel.text!) ?? 0 }
     
     
     
@@ -55,11 +46,11 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             print("ariqaaaaaaa vashaaa")
             groupedItems = asd
             sumPriceLabel.text = sumCalculation?.totalPrice ?? "655"
-            var a = 0
+           finalQuantity = 0
             for i in 0..<sumInfoArray.count {
-                a += sumInfoArray[i].quantity
+                finalQuantity += sumInfoArray[i].quantity
             }
-            quantityLabel.text = String(a) + "x"
+            quantityLabel.text = String(finalQuantity)
         }else {
             print("isev sawvalebelia")
             fillMainData()
@@ -136,14 +127,15 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     // MARK: - Delegate Functions
     
     func updateSummary(sum: Int, title: String, secNum: Int, rowNum: Int, image: String, isAdding: Bool) {
-        let q = finalQuantity + 1
+        
+        
         let item = SumCellInfo(image: image, title: title, quantity: 1, subTotal: sum)
         
         // if -------------------
         if isAdding {
             goToSumBtn.isEnabled = true
-           
-            let subtotal = String(finalSubTotal + sum) + "$"
+            let subtotal = finalSubTotal + sum
+            finalQuantity += 1
             
             if sumInfoArray.isEmpty {
                 sumInfoArray.append(item)
@@ -162,15 +154,17 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                     sumInfoArray.append(item)
                 }
             }
-
+            quantityLabel.text = String(finalQuantity)
+            sumPriceLabel.text = String(subtotal)
             groupedItems[secNum][rowNum].choosenQuantity += 1
-            quantityLabel.text = String(q)
-            sumPriceLabel.text = subtotal
+           
             // else ---------------------
         }else {
+            let subtotal1 = finalSubTotal - sum
+            finalQuantity -= 1
             groupedItems[secNum][rowNum].choosenQuantity -= 1
             quantityLabel.text = String(finalQuantity - 1)
-            sumPriceLabel.text = String(finalSubTotal - sum) + "$"
+            sumPriceLabel.text = String(finalSubTotal - sum)
             for num in 0..<sumInfoArray.count {
                 if sumInfoArray[num].title == item.title {
                     if sumInfoArray[num].quantity == 1 {
@@ -182,9 +176,11 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                     break
                 }
             }
+            quantityLabel.text = String(finalQuantity )
+            sumPriceLabel.text = String(subtotal1)
         }
         
-
+       
         updateSumCellArrayPlusAction()
     }
     
