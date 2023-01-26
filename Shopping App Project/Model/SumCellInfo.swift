@@ -13,6 +13,6 @@ import UIKit
 struct SumCellInfo: Codable {
     var image: String
     var title: String
-    var quantity: String
-    var subTotal: String
+    var quantity: Int
+    var subTotal: Int
 }

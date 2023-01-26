@@ -61,7 +61,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHg-eZ-be1">
-                        <rect key="frame" x="337" y="62" width="10.333333333333314" height="21"/>
+                        <rect key="frame" x="337" y="62" width="10" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="bfj-TN-hv6"/>
                             <constraint firstAttribute="height" constant="21" id="rqW-Yj-FkO"/>

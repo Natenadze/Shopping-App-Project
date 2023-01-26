@@ -75,8 +75,8 @@ extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
        
         cell.sumImage.kf.setImage(with: url)
         cell.titleLbl.text = cellInfo?[indexPath.row].title
-        cell.quantityLbl.text = cellInfo?[indexPath.row].quantity
-        cell.sumLbl.text = cellInfo?[indexPath.row].subTotal
+        cell.quantityLbl.text =  String(cellInfo![indexPath.row].quantity)
+        cell.sumLbl.text =  String(cellInfo![indexPath.row].subTotal)
         return cell
     }
  
