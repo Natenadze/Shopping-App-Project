@@ -10,17 +10,14 @@ import UIKit
 
 struct ShakeAnimation {
     
-    static func shake(view: UIImageView) {
-        
-            let animation = CAKeyframeAnimation()
-            animation.keyPath = "position.x"
-            animation.values = [0, 10, -10, 10, 0]
-            animation.keyTimes = [0, 0.16, 0.5, 0.83, 1]
-            animation.duration = 0.4
-            animation.isAdditive = true
-        view.layer.add(animation, forKey: "shake")
-        UIView.animate(withDuration: 2, delay: 0) {
-            view.transform = .identity
-        }
+    static func shake(imageView: UIImageView) {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = 0.1
+        shakeAnimation.repeatCount = 2
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = NSValue(cgPoint: CGPoint(x: imageView.center.x - 5, y: imageView.center.y))
+        shakeAnimation.toValue = NSValue(cgPoint: CGPoint(x: imageView.center.x + 5, y: imageView.center.y))
+        imageView.layer.add(shakeAnimation, forKey: "position")
+
     }
 }

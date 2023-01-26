@@ -133,7 +133,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         
         // if -------------------
         if isAdding {
-            ShakeAnimation.shake(view: cartImageView)
+            cartImageView.shake()
             cartImageView.image = UIImage(systemName: "cart.fill")
             goToSumBtn.isEnabled = true
             let subtotal = finalSubTotal + sum
