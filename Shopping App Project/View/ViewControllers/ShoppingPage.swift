@@ -12,6 +12,7 @@ import Kingfisher
 class ShoppingPage: UIViewController, SummaryProtocol {
     
 
+    @IBOutlet weak var cartImageView: UIImageView!
     @IBOutlet weak var sumPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -132,6 +133,8 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         
         // if -------------------
         if isAdding {
+            ShakeAnimation.shake(view: cartImageView)
+            cartImageView.image = UIImage(systemName: "cart.fill")
             goToSumBtn.isEnabled = true
             let subtotal = finalSubTotal + sum
             finalQuantity += 1
@@ -159,7 +162,11 @@ class ShoppingPage: UIViewController, SummaryProtocol {
            
             // else ---------------------
         }else {
+            
             let subtotal1 = finalSubTotal - sum
+            if subtotal1 == 0 {
+                cartImageView.image = UIImage(systemName: "cart")
+            }
             finalQuantity -= 1
             groupedItems[secNum][rowNum].choosenQuantity -= 1
             quantityLabel.text = String(finalQuantity - 1)
@@ -191,57 +198,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         UserDefaults.standard.summary = sumCalculation
         tableView.reloadData()  // reload when payment is done?
     }
-    
-    
-    
-    
-//    func populateSumInfoArray(item: SumCellInfo) {
-//        if sumInfoArray.isEmpty {
-//            sumInfoArray.append(item)
-//
-//        }else {
-//            var found = false
-//
-//            for num in 0..<sumInfoArray.count {
-//                if sumInfoArray[num].title == item.title {
-//                    sumInfoArray[num].quantity = sumInfoArray[num].quantity + 1
-//                    sumInfoArray[num].subTotal = item.subTotal
-//                    found = true
-//                    break
-//                }
-//            }
-//            if !found {
-//                sumInfoArray.append(item)
-//            }
-//        }
-//    }
-    
-    
-     
-    
-    
-//        func updateSumCellArrayMinusAction(info: SumCellInfo) {
-//
-//            for num in 0..<sumInfoArray.count {
-//                if sumInfoArray[num].title == info.title {
-//                    if sumInfoArray[num].quantity == "1" {
-//                        sumInfoArray.remove(at: num)
-//                    } else {
-//                        sumInfoArray[num].quantity = String(Int(sumInfoArray[num].quantity)! - 1)
-//                        sumInfoArray[num].subTotal = String(Int(sumInfoArray[num].subTotal)! - Int(info.subTotal)!)
-//                    }
-//                    break
-//                }
-//            }
-//            if sumInfoArray.isEmpty {
-//                goToSumBtn.isEnabled = false
-//            }
-//            UserDefaults.standard.busket = sumInfoArray
-//            sumCalculation = sumCalc()
-//            UserDefaults.standard.grr = groupedItems
-//            UserDefaults.standard.summary = sumCalculation
-//            tableView.reloadData()
-//        }
     
     
     

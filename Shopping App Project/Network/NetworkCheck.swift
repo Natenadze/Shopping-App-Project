@@ -5,7 +5,6 @@
 //  Created by Davit Natenadze on 26.01.23.
 //
 
-import Foundation
 import UIKit
 import SystemConfiguration
 
@@ -34,7 +33,7 @@ class NetworkCheck {
         let needsConnection = flags.contains(.connectionRequired)
         return (isReachable && !needsConnection)
     }
-
+    
     func checkIt(presenter: UIViewController) {
         if checkConnection() {
             print("Internet connection is available.")
