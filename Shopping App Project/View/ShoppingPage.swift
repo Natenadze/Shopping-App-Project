@@ -33,6 +33,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NetworkCheck.shared.checkIt(viewController: self)
         navigationController?.navigationBar.isHidden = true
         //        goToSumBtn.isEnabled = false
         sumInfoArray =  UserDefaults.standard.busket ?? sumInfoArray
@@ -43,16 +44,14 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         groupedItems = UserDefaults.standard.grr ?? groupedItems
         
         if let asd = UserDefaults.standard.grr {
-            print("ariqaaaaaaa vashaaa")
             groupedItems = asd
-            sumPriceLabel.text = sumCalculation?.totalPrice ?? "655"
+            sumPriceLabel.text = sumCalculation?.totalPrice ?? "0"
            finalQuantity = 0
             for i in 0..<sumInfoArray.count {
                 finalQuantity += sumInfoArray[i].quantity
             }
             quantityLabel.text = String(finalQuantity)
         }else {
-            print("isev sawvalebelia")
             fillMainData()
         }
         
