@@ -98,12 +98,13 @@
 		5D348B802974768B001FAF2A /* Shopping App Project */ = {
 			isa = PBXGroup;
 			children = (
-				5D5623C229818B1A00390A1F /* Extensions */,
 				5D52FBD829749319002A6EB2 /* Delegates */,
 				5D912B452975BA34002CA421 /* Model */,
 				5D912B432975B588002CA421 /* Animations */,
 				5D912B4A2976C0CE002CA421 /* Network */,
 				5D912B3E2975AE98002CA421 /* View */,
+				5D912B442975B8E0002CA421 /* CustomCells */,
+				5D5623C229818B1A00390A1F /* Extensions */,
 				5D348B8D2974768D001FAF2A /* Assets.xcassets */,
 				5D348B8F2974768D001FAF2A /* LaunchScreen.storyboard */,
 				5D348B922974768D001FAF2A /* Info.plist */,
@@ -147,6 +148,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5D5623E5298333ED00390A1F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D348B852974768B001FAF2A /* WelcomeViewController.swift */,
+				5D348B9829748C71001FAF2A /* LoginVC.swift */,
+				5D348B9A29748C86001FAF2A /* RegisterVC.swift */,
+				5D912B37297587C6002CA421 /* ShoppingPage.swift */,
+				5D912B73297860CE002CA421 /* SummaryVC.swift */,
+				5D912B752978610E002CA421 /* ConfirmationVC.swift */,
+				5D912B772978614B002CA421 /* PaymentErrorVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		5D7F207E297AC5320074BA27 /* ShoppingPageCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,15 +174,8 @@
 		5D912B3E2975AE98002CA421 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5D348B852974768B001FAF2A /* WelcomeViewController.swift */,
-				5D348B9829748C71001FAF2A /* LoginVC.swift */,
-				5D348B9A29748C86001FAF2A /* RegisterVC.swift */,
-				5D912B37297587C6002CA421 /* ShoppingPage.swift */,
-				5D912B73297860CE002CA421 /* SummaryVC.swift */,
-				5D912B752978610E002CA421 /* ConfirmationVC.swift */,
-				5D912B772978614B002CA421 /* PaymentErrorVC.swift */,
 				5D56238D297AE7CC00390A1F /* Storyboard */,
-				5D912B442975B8E0002CA421 /* CustomCells */,
+				5D5623E5298333ED00390A1F /* ViewControllers */,
 			);
 			path = View;
 			sourceTree = "<group>";

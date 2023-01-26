@@ -49,9 +49,9 @@ class SummaryVC: UIViewController {
     }
     
     @IBAction func payPressed(_ sender: UIButton) {
-        NetworkCheck.shared.checkIt(viewController: self)
+        NetworkCheck.shared.checkIt(presenter: self)
         let price = Int(priceLabel.text!.dropLast(1))!
-        if price > 3000 {
+        if price > 1000 {
             performSegue(withIdentifier: "declined", sender: self)
         }else {
             performSegue(withIdentifier: "success", sender: self)

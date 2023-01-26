@@ -33,7 +33,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkCheck.shared.checkIt(viewController: self)
+        NetworkCheck.shared.checkIt(presenter: self)
         navigationController?.navigationBar.isHidden = true
         //        goToSumBtn.isEnabled = false
         sumInfoArray =  UserDefaults.standard.busket ?? sumInfoArray

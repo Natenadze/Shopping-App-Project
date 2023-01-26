@@ -14,6 +14,7 @@ class ConfirmationVC: UIViewController {
     }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let destVC = segue.destination as! ShoppingPage
+//        
 //        destVC.tableView.reloadData()
 //    }
     

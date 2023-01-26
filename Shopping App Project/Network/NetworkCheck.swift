@@ -35,13 +35,13 @@ class NetworkCheck {
         return (isReachable && !needsConnection)
     }
 
-    func checkIt(viewController: UIViewController) {
+    func checkIt(presenter: UIViewController) {
         if checkConnection() {
             print("Internet connection is available.")
         } else {
             let alert = UIAlertController(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            viewController.present(alert, animated: true)
+            presenter.present(alert, animated: true)
         }
     }
 }
