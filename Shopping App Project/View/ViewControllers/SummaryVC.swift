@@ -20,7 +20,7 @@ class SummaryVC: UIViewController {
     @IBOutlet weak var deliveryLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
-    var calc: Calc?
+    var calc: SummaryCalculator?
     var cellInfo: [SumCellInfo]?
     
     override func viewDidLoad() {

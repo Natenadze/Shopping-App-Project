@@ -10,7 +10,8 @@ import FirebaseAuth
 
 class RegisterVC: UIViewController {
     
-//    let navigation = UINavigationController()
+    let activityIndicator = UIActivityIndicatorView()
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -18,11 +19,24 @@ class RegisterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NetworkCheck.shared.checkIt(presenter: self)
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .medium
+        activityIndicator.transform = CGAffineTransform(scaleX: 3, y: 3)
+        view.addSubview(activityIndicator)
         
     }
     
+    func startActivity() {
+        activityIndicator.startAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
     @IBAction func registerPressed(_ sender: UIButton) {
+        startActivity()
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error {
@@ -31,23 +45,10 @@ class RegisterVC: UIViewController {
                     
                     let mainScreen = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
                     self.navigationController!.pushViewController(mainScreen, animated: true)
-
-
+                    
+                    
                 }
             }
         }
-        
-       
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

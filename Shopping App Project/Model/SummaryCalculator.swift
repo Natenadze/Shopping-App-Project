@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Calc: Codable {
+struct SummaryCalculator: Codable {
     var totalPrice: String
     var vat : String
     var delivery: String

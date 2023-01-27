@@ -25,10 +25,10 @@ extension UserDefaults {
        
     }
     
-    var summary: Calc? {
+    var summary: SummaryCalculator? {
         get {
             if let data = object(forKey: "test2") as? Data {
-                let result = try? JSONDecoder().decode(Calc.self, from: data)
+                let result = try? JSONDecoder().decode(SummaryCalculator.self, from: data)
                 return result
             }
             return nil
@@ -40,7 +40,7 @@ extension UserDefaults {
        
     }
     
-    var grr: [[Product]]? {
+    var savedGroup: [[Product]]? {
         get {
             if let data = object(forKey: "test3") as? Data {
                 let result = try? JSONDecoder().decode([[Product]].self, from: data)

@@ -8,10 +8,8 @@
 import UIKit
 import Kingfisher
 
-
 class ShoppingPage: UIViewController, SummaryProtocol {
     
-
     @IBOutlet weak var cartImageView: UIImageView!
     @IBOutlet weak var sumPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
@@ -19,35 +17,31 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     @IBOutlet weak var goToSumBtn: UIButton!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var items: [Product]!
     var groupedItems = [[Product]]()
-    
     var sumInfoArray = [SumCellInfo]()
-    var sumCalculation: Calc?
-    
+    var sumCalculation: SummaryCalculator?
     var imageDictionary = [Int: UIImage]()
     var finalQuantity = 0
     var finalSubTotal: Int! { Int(sumPriceLabel.text!) ?? 0 }
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkCheck.shared.checkIt(presenter: self)
         navigationController?.navigationBar.isHidden = true
-        //        goToSumBtn.isEnabled = false
+        goToSumBtn.isEnabled = false
         sumInfoArray =  UserDefaults.standard.busket ?? sumInfoArray
         if let result = UserDefaults.standard.summary {
             sumCalculation = result
         }
         
-        groupedItems = UserDefaults.standard.grr ?? groupedItems
+        groupedItems = UserDefaults.standard.savedGroup ?? groupedItems
         
-        if let asd = UserDefaults.standard.grr {
-            groupedItems = asd
+        if let newGroup = UserDefaults.standard.savedGroup {
+            groupedItems = newGroup
             sumPriceLabel.text = sumCalculation?.totalPrice ?? "0"
-           finalQuantity = 0
+            finalQuantity = 0
             for i in 0..<sumInfoArray.count {
                 finalQuantity += sumInfoArray[i].quantity
             }
@@ -84,32 +78,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-    }
-    
-    
-    
-    
-    func sumCalc() -> Calc {
-        var vat: Int {
-            Int(Double(finalSubTotal!) * 0.21)
-        }
-        var delivery = 50
-        if vat == 0 {
-            delivery = 0
-        }
-        var total: String {
-            String(finalSubTotal! + Int(vat) + delivery)
-        }
-        
-        return Calc(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
-    }
-    
     func updateGroupedItems() {
         let dict = Dictionary(grouping: self.items, by: {$0.category})
         let keys = dict.keys.sorted()
@@ -123,15 +91,37 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    
+    func sumCalc() -> SummaryCalculator {
+        var vat: Int {
+            Int(Double(finalSubTotal!) * 0.21)
+        }
+        var delivery = 50
+        if vat == 0 {
+            delivery = 0
+        }
+        var total: String {
+            String(finalSubTotal! + Int(vat) + delivery)
+        }
+        
+        return SummaryCalculator(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
+    }
+    
+ 
+    
     
     // MARK: - Delegate Functions
     
     func updateSummary(sum: Int, title: String, secNum: Int, rowNum: Int, image: String, isAdding: Bool) {
         
-        
         let item = SumCellInfo(image: image, title: title, quantity: 1, subTotal: sum)
         
-        // if -------------------
         if isAdding {
             cartImageView.shake()
             cartImageView.image = UIImage(systemName: "cart.fill")
@@ -145,7 +135,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                 var found = false
                 for num in 0..<sumInfoArray.count {
                     if sumInfoArray[num].title == item.title {
-                        
                         sumInfoArray[num].quantity = sumInfoArray[num].quantity + 1
                         sumInfoArray[num].subTotal = sumInfoArray[num].subTotal + sum
                         found = true
@@ -159,8 +148,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             quantityLabel.text = String(finalQuantity)
             sumPriceLabel.text = String(subtotal)
             groupedItems[secNum][rowNum].choosenQuantity += 1
-           
-            // else ---------------------
+            
         }else {
             
             let subtotal1 = finalSubTotal - sum
@@ -185,34 +173,21 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             quantityLabel.text = String(finalQuantity )
             sumPriceLabel.text = String(subtotal1)
         }
-        
-       
         updateSumCellArrayPlusAction()
     }
     
     func updateSumCellArrayPlusAction() {
-
         UserDefaults.standard.busket = sumInfoArray
         sumCalculation = sumCalc()
-        UserDefaults.standard.grr = groupedItems
+        UserDefaults.standard.savedGroup = groupedItems
         UserDefaults.standard.summary = sumCalculation
-        tableView.reloadData()  // reload when payment is done?
+        tableView.reloadData()
     }
-    
-    
-    
-    
     
     @IBAction func goToSummary(_ sender: UIButton) {
         
-        
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
-        //        if finalSubTotal! != 0 {
-        
         summaryVC.calc = sumCalculation
-        
-        //        }
-        
         summaryVC.cellInfo = sumInfoArray
         navigationController?.pushViewController(summaryVC.self, animated: true)
     }
@@ -220,7 +195,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     @IBAction func unwindToShoppingVC(_ sender: UIStoryboardSegue) {
         self.dismiss(animated: false)
     }
-    
 }
 
 // MARK: - Extension
@@ -250,15 +224,10 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         cell.section = indexPath.section
         cell.row = indexPath.row
         cell.delegate = self
-        
         let url = URL(string: currentItem.thumbnail)!
         cell.productImage.kf.setImage(with: url)
-        
         return cell
     }
-    
-    
-    
     
     // MARK: - Header info
     
@@ -294,6 +263,5 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         case 0: return 150
         default: return 110
         }
-        
     }
 }

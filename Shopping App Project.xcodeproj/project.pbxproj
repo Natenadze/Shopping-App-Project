@@ -19,7 +19,7 @@
 		5D562390297AE86800390A1F /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56238E297AE86800390A1F /* SummaryCell.swift */; };
 		5D562391297AE86800390A1F /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D56238F297AE86800390A1F /* SummaryCell.xib */; };
 		5D562396297C39F000390A1F /* SumCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D562395297C39F000390A1F /* SumCellInfo.swift */; };
-		5D562398297C3A1F00390A1F /* Calc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D562397297C3A1F00390A1F /* Calc.swift */; };
+		5D562398297C3A1F00390A1F /* SummaryCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D562397297C3A1F00390A1F /* SummaryCalculator.swift */; };
 		5D5623BD298037E300390A1F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5D5623BC298037E300390A1F /* Kingfisher */; };
 		5D5623C12981625E00390A1F /* UserDef Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5623C02981625D00390A1F /* UserDef Extension.swift */; };
 		5D5623E429832F9E00390A1F /* NetworkCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5623E329832F9E00390A1F /* NetworkCheck.swift */; };
@@ -52,7 +52,7 @@
 		5D56238E297AE86800390A1F /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
 		5D56238F297AE86800390A1F /* SummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
 		5D562395297C39F000390A1F /* SumCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumCellInfo.swift; sourceTree = "<group>"; };
-		5D562397297C3A1F00390A1F /* Calc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calc.swift; sourceTree = "<group>"; };
+		5D562397297C3A1F00390A1F /* SummaryCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCalculator.swift; sourceTree = "<group>"; };
 		5D5623C02981625D00390A1F /* UserDef Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDef Extension.swift"; sourceTree = "<group>"; };
 		5D5623E329832F9E00390A1F /* NetworkCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCheck.swift; sourceTree = "<group>"; };
 		5D5623E629833A3700390A1F /* ShakeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAnimation.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			children = (
 				5D912B462975BA51002CA421 /* ProductModel.swift */,
 				5D562395297C39F000390A1F /* SumCellInfo.swift */,
-				5D562397297C3A1F00390A1F /* Calc.swift */,
+				5D562397297C3A1F00390A1F /* SummaryCalculator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 				5D912B492976C0C1002CA421 /* NetworkManager.swift in Sources */,
 				5D912B412975AECA002CA421 /* CustomCell.swift in Sources */,
 				5D348B9B29748C86001FAF2A /* RegisterVC.swift in Sources */,
-				5D562398297C3A1F00390A1F /* Calc.swift in Sources */,
+				5D562398297C3A1F00390A1F /* SummaryCalculator.swift in Sources */,
 				5D562390297AE86800390A1F /* SummaryCell.swift in Sources */,
 				5D562396297C39F000390A1F /* SumCellInfo.swift in Sources */,
 				5D348B842974768B001FAF2A /* SceneDelegate.swift in Sources */,
