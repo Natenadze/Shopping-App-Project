@@ -30,6 +30,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         super.viewDidLoad()
         NetworkCheck.shared.checkIt(presenter: self)
         navigationController?.navigationBar.isHidden = true
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.dataSource = self
         
         sumInfoArray =  UserDefaults.standard.busket ?? sumInfoArray
         sumCalculation = UserDefaults.standard.summary ?? nil
@@ -46,10 +49,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         goToSumBtn.isEnabled = finalQuantity != 0
-        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
-        tableView.delegate = self
-        tableView.dataSource = self
+        
     }
     
     func fillMainData() {
@@ -59,6 +61,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                 let products = try JSONDecoder().decode([Product].self, from: savedData)
                 self.items = products
                 updateGroupedItems()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             } catch {
                 print("Error decoding products from UserDefaults: \(error)")
             }
@@ -73,8 +78,12 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                     print("Error encoding products to save to UserDefaults: \(error)")
                 }
                 self.updateGroupedItems()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
+        
     }
     
     func updateGroupedItems() {
@@ -90,31 +99,21 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
     }
     
-  
-    
-    
     func sumCalc() -> SummaryCalculator {
         var vat: Int {
             Int(Double(finalSubTotal!) * 0.21)
         }
         var delivery = 50
-        if vat == 0 {
-            delivery = 0
-        }
+        delivery = vat == 0 ? 0 : 50
         var total: String {
             String(finalSubTotal! + Int(vat) + delivery)
         }
-        
         return SummaryCalculator(totalPrice: String(finalSubTotal!), vat: String(vat), delivery: String(delivery), total: total)
     }
-    
- 
-    
     
     // MARK: - Delegate Functions
     
     func updateSummary(sum: Int, title: String, secNum: Int, rowNum: Int, image: String, isAdding: Bool) {
-        
         let item = SumCellInfo(image: image, title: title, quantity: 1, subTotal: sum)
         
         if isAdding {
@@ -143,8 +142,9 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             sumPriceLabel.text = String(subtotal)
             groupedItems[secNum][rowNum].choosenQuantity += 1
             
-        }else {
-            
+        }
+        
+        if !isAdding {
             let subtotal1 = finalSubTotal - sum
             if subtotal1 == 0 {
                 cartImageView.image = UIImage(systemName: "cart")
@@ -168,7 +168,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             sumPriceLabel.text = String(subtotal1)
         }
         goToSumBtn.isEnabled = finalQuantity != 0
-
         updateSumCellArrayPlusAction()
     }
     
@@ -181,7 +180,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
     }
     
     @IBAction func goToSummary(_ sender: UIButton) {
-        
         let summaryVC = storyboard?.instantiateViewController(withIdentifier: "summaryVC") as! SummaryVC
         summaryVC.calc = sumCalculation
         summaryVC.cellInfo = sumInfoArray
@@ -232,7 +230,6 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         header.backgroundColor = .white
         if section == 0 {
-            
             let image = UIImageView(image: UIImage(named: "logo"))
             image.contentMode = .scaleAspectFit
             header.addSubview(image)
