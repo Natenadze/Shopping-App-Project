@@ -95,6 +95,8 @@
             </accessibility>
             <connections>
                 <outlet property="chosenQuantityLabel" destination="QfF-Fl-5OA" id="x6B-kj-Vdr"/>
+                <outlet property="minusButton" destination="k53-5R-ySJ" id="8VZ-kL-SHY"/>
+                <outlet property="plusButton" destination="fha-8Z-vjU" id="VRU-JZ-ooO"/>
                 <outlet property="priceLabel" destination="wQu-Md-xM2" id="joX-nl-nf0"/>
                 <outlet property="productImage" destination="Ftq-L0-foB" id="Pgc-hs-yGA"/>
                 <outlet property="stockLabel" destination="DtM-lO-1XQ" id="UG8-Mf-cW3"/>

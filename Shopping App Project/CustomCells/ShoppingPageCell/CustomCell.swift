@@ -23,6 +23,8 @@ class CustomCell: UITableViewCell {
     var section = 0
     var row = 0
     
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stockLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -31,6 +33,7 @@ class CustomCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+      
         self.selectionStyle = .none
     }
     

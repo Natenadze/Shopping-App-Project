@@ -217,7 +217,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         let currentItem = groupedItems[indexPath.section][indexPath.row]
         
         cell.titleLabel.text = currentItem.title
-        cell.stockLabel.text = String(currentItem.remainingQuantity)
+        cell.stockLabel.text = String(currentItem.stock)
         cell.priceLabel.text = String(currentItem.price)
         cell.chosenQuantityLabel.text = String(currentItem.choosenQuantity!)
         cell.imageURL = currentItem.thumbnail
