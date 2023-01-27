@@ -32,10 +32,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         navigationController?.navigationBar.isHidden = true
         
         sumInfoArray =  UserDefaults.standard.busket ?? sumInfoArray
-        if let result = UserDefaults.standard.summary {
-            sumCalculation = result
-        }
-        
+        sumCalculation = UserDefaults.standard.summary ?? nil
         groupedItems = UserDefaults.standard.savedGroup ?? groupedItems
         
         if let newGroup = UserDefaults.standard.savedGroup {
@@ -123,7 +120,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         if isAdding {
             cartImageView.shake()
             cartImageView.image = UIImage(systemName: "cart.fill")
-//            goToSumBtn.isEnabled = true
             let subtotal = finalSubTotal + sum
             finalQuantity += 1
             

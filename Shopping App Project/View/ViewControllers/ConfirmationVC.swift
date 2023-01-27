@@ -24,6 +24,7 @@ class ConfirmationVC: UIViewController {
                 product.choosenQuantity = 0
             }
         }
+        destVC.sumInfoArray.removeAll(keepingCapacity: true)
         UserDefaults.standard.summary = nil
         UserDefaults.standard.busket = nil
         UserDefaults.standard.savedGroup = destVC.groupedItems
