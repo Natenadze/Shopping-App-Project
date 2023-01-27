@@ -107,8 +107,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mxf-Qe-n8D" userLabel="upView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="341.66666666666669"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="კეთილი იყოს მობრძანება!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-Fy-GOb">
-                                        <rect key="frame" x="52" y="77.666666666666657" width="289.33333333333331" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to City Mall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-Fy-GOb">
+                                        <rect key="frame" x="94.666666666666671" y="77.666666666666657" width="203.66666666666663" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="0f4-j2-Q28"/>
                                         </constraints>
@@ -135,21 +135,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Za5-Lp-zyM" userLabel="bottomView">
                                 <rect key="frame" x="0.0" y="400.66666666666674" width="393" height="417.33333333333326"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6HJ-jD-r0c" userLabel="text Stack">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6HJ-jD-r0c" userLabel="text Stack">
                                         <rect key="frame" x="16" y="29.999999999999986" width="361" height="208.66666666666663"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j7G-wK-DCe" userLabel="eMail TextField">
-                                                <rect key="frame" x="0.0" y="0.0" width="361" height="56"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="361" height="62.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tZe-RT-SiW" userLabel="Password TextField">
-                                                <rect key="frame" x="0.0" y="76" width="361" height="56.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="72.666666666666629" width="361" height="63"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5El-bZ-Lso">
-                                                <rect key="frame" x="0.0" y="152.33333333333331" width="361" height="56.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="145.66666666666669" width="361" height="63"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="შესვლა"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Login" cornerStyle="medium">
@@ -620,8 +620,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKL-ct-V4g" userLabel="upView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="341.66666666666669"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="კეთილი იყოს მობრძანება!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZHD-od-gfu">
-                                        <rect key="frame" x="52" y="77.666666666666657" width="289.33333333333331" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to City Mall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZHD-od-gfu">
+                                        <rect key="frame" x="94.666666666666671" y="77.666666666666657" width="203.66666666666663" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="gbH-82-uxP"/>
                                         </constraints>
@@ -630,7 +630,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-Ra-2tL">
-                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333348" height="211.99999999999997"/>
+                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333337" height="211.99999999999997"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -648,21 +648,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ssb-Hm-vbX" userLabel="bottomView">
                                 <rect key="frame" x="0.0" y="400.66666666666674" width="393" height="417.33333333333326"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iVx-Gb-bCg" userLabel="text Stack">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iVx-Gb-bCg" userLabel="text Stack">
                                         <rect key="frame" x="16" y="10" width="361" height="208.66666666666666"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ECX-VS-dpq" userLabel="eMail TextField">
-                                                <rect key="frame" x="0.0" y="0.0" width="361" height="56"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="361" height="62.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JI3-2C-TzI" userLabel="Password TextField">
-                                                <rect key="frame" x="0.0" y="76" width="361" height="56.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="72.666666666666629" width="361" height="63"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HH1-Mp-zno">
-                                                <rect key="frame" x="0.0" y="152.33333333333331" width="361" height="56.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="145.66666666666669" width="361" height="63"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="შესვლა"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Register" cornerStyle="medium">

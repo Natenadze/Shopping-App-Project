@@ -27,6 +27,11 @@ class LoginVC: UIViewController {
         view.addSubview(activityIndicator)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+            self.view.endEditing(true)
+    }
+    
     func startActivity(completion: @escaping () -> Void) {
         activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
