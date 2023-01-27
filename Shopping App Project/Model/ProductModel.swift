@@ -5,7 +5,7 @@
 //  Created by Davit Natenadze on 16.01.23.
 //
 
-import Foundation
+import UIKit
 
 struct ProductModel: Codable {
     var products: [Product]
@@ -23,5 +23,9 @@ class Product: Codable {
     var remainingQuantity: Int! {
         stock - choosenQuantity
     }
+    var textColor: UIColor {
+          return stock == 0 ? UIColor.red : UIColor.black
+      }
+
     
 }

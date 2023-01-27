@@ -224,6 +224,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         cell.section = indexPath.section
         cell.row = indexPath.row
         cell.delegate = self
+        cell.titleLabel.textColor = currentItem.textColor
         let url = URL(string: currentItem.thumbnail)!
         cell.productImage.kf.setImage(with: url)
         return cell

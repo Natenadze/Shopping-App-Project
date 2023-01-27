@@ -33,7 +33,10 @@ class CustomCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-      
+        if titleLabel.textColor == .red {
+            plusButton.isEnabled = false
+            minusButton.isEnabled = false
+        }
         self.selectionStyle = .none
     }
     
