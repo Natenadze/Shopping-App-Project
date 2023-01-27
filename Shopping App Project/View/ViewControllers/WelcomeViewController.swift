@@ -15,16 +15,11 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
     }
     
     override func viewDidAppear(_ animated: Bool) {
         titleLabel.animateTitle()
     }
-    
-  
-    
-    
     
     @IBAction func loginPressed (_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginVC

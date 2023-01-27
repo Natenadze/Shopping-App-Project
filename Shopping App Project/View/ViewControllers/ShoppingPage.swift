@@ -30,7 +30,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         super.viewDidLoad()
         NetworkCheck.shared.checkIt(presenter: self)
         navigationController?.navigationBar.isHidden = true
-        goToSumBtn.isEnabled = false
+        
         sumInfoArray =  UserDefaults.standard.busket ?? sumInfoArray
         if let result = UserDefaults.standard.summary {
             sumCalculation = result
@@ -41,16 +41,18 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         if let newGroup = UserDefaults.standard.savedGroup {
             groupedItems = newGroup
             sumPriceLabel.text = sumCalculation?.totalPrice ?? "0"
-            finalQuantity = 0
-            for i in 0..<sumInfoArray.count {
-                finalQuantity += sumInfoArray[i].quantity
-            }
+            finalQuantity = sumInfoArray.isEmpty ? 0 : sumInfoArray.reduce(0, { $0 + $1.quantity })
             quantityLabel.text = String(finalQuantity)
         }else {
             fillMainData()
         }
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        goToSumBtn.isEnabled = finalQuantity != 0
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func fillMainData() {
@@ -91,11 +93,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "cell")
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
+  
     
     
     func sumCalc() -> SummaryCalculator {
@@ -125,7 +123,7 @@ class ShoppingPage: UIViewController, SummaryProtocol {
         if isAdding {
             cartImageView.shake()
             cartImageView.image = UIImage(systemName: "cart.fill")
-            goToSumBtn.isEnabled = true
+//            goToSumBtn.isEnabled = true
             let subtotal = finalSubTotal + sum
             finalQuantity += 1
             
@@ -173,6 +171,8 @@ class ShoppingPage: UIViewController, SummaryProtocol {
             quantityLabel.text = String(finalQuantity )
             sumPriceLabel.text = String(subtotal1)
         }
+        goToSumBtn.isEnabled = finalQuantity != 0
+
         updateSumCellArrayPlusAction()
     }
     
