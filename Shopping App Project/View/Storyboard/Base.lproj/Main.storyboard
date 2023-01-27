@@ -136,14 +136,14 @@
                                 <rect key="frame" x="0.0" y="400.66666666666674" width="393" height="417.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6HJ-jD-r0c" userLabel="text Stack">
-                                        <rect key="frame" x="16" y="10" width="361" height="208.66666666666666"/>
+                                        <rect key="frame" x="16" y="29.999999999999986" width="361" height="208.66666666666663"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="davit@gmail.com" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j7G-wK-DCe" userLabel="eMail TextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j7G-wK-DCe" userLabel="eMail TextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="56"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tZe-RT-SiW" userLabel="Password TextField">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tZe-RT-SiW" userLabel="Password TextField">
                                                 <rect key="frame" x="0.0" y="76" width="361" height="56.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -161,13 +161,25 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boy-vF-ezT">
+                                        <rect key="frame" x="20" y="8" width="353" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="M6L-Dp-sHO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" systemColor="systemPinkColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="6HJ-jD-r0c" firstAttribute="top" secondItem="Za5-Lp-zyM" secondAttribute="top" constant="10" id="Et9-UA-tvw"/>
+                                    <constraint firstItem="6HJ-jD-r0c" firstAttribute="top" secondItem="Za5-Lp-zyM" secondAttribute="top" constant="30" id="Et9-UA-tvw"/>
+                                    <constraint firstItem="boy-vF-ezT" firstAttribute="leading" secondItem="Za5-Lp-zyM" secondAttribute="leading" constant="20" id="IuF-gH-iDm"/>
                                     <constraint firstItem="6HJ-jD-r0c" firstAttribute="height" secondItem="Za5-Lp-zyM" secondAttribute="height" multiplier="0.5" id="LN7-jy-kAs"/>
                                     <constraint firstAttribute="trailing" secondItem="6HJ-jD-r0c" secondAttribute="trailing" constant="16" id="hpr-sO-Y58"/>
+                                    <constraint firstItem="6HJ-jD-r0c" firstAttribute="top" secondItem="boy-vF-ezT" secondAttribute="bottom" constant="1" id="r7S-LN-ZPF"/>
                                     <constraint firstItem="6HJ-jD-r0c" firstAttribute="leading" secondItem="Za5-Lp-zyM" secondAttribute="leading" constant="16" id="tba-ha-mNR"/>
+                                    <constraint firstAttribute="trailing" secondItem="boy-vF-ezT" secondAttribute="trailing" constant="20" id="u5O-gY-0Vr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -188,6 +200,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="j7G-wK-DCe" id="40I-3H-FBU"/>
+                        <outlet property="errorLabel" destination="boy-vF-ezT" id="EwO-Dl-63b"/>
                         <outlet property="passwordTextField" destination="tZe-RT-SiW" id="uS1-W4-k5V"/>
                     </connections>
                 </viewController>
@@ -617,7 +630,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-Ra-2tL">
-                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333337" height="211.99999999999997"/>
+                                        <rect key="frame" x="-78.666666666666686" y="122.66666666666666" width="550.33333333333348" height="211.99999999999997"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

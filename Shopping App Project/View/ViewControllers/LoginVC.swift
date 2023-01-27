@@ -12,9 +12,10 @@ import FirebaseAuth
 class LoginVC: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
-    let activityIndicator = UIActivityIndicatorView()
-    
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    let activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,22 +27,33 @@ class LoginVC: UIViewController {
         view.addSubview(activityIndicator)
     }
     
-    func startActivity() {
+    func startActivity(completion: @escaping () -> Void) {
         activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.activityIndicator.stopAnimating()
+            completion()
         }
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
-        startActivity()
+        
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error {
                     print(error.localizedDescription)
+                    if self.emailTextField.text == "" || self.passwordTextField.text == "" {
+                        self.errorLabel.text = "fill in the required fields"
+                    }else {
+                        self.errorLabel.text = "email or password is incorrect"
+                    }
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
                 }else {
-                    let mainScreen = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
-                    self.navigationController!.pushViewController(mainScreen, animated: true)
+                    self.errorLabel.text = ""
+                    self.startActivity() {
+                        let mainScreen = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
+                        self.navigationController!.pushViewController(mainScreen, animated: true)
+                    }
                 }
             }
         }

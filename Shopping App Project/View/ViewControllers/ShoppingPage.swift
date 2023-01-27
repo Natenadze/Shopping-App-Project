@@ -83,7 +83,6 @@ class ShoppingPage: UIViewController, SummaryProtocol {
                 }
             }
         }
-        
     }
     
     func updateGroupedItems() {
