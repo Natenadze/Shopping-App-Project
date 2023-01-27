@@ -10,21 +10,22 @@ import FirebaseAuth
 
 class RegisterVC: UIViewController {
     
-    let activityIndicator = UIActivityIndicatorView()
+    
     
     
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    let activityIndicator2 = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkCheck.shared.checkIt(presenter: self)
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .medium
-        activityIndicator.transform = CGAffineTransform(scaleX: 3, y: 3)
-        view.addSubview(activityIndicator)
+        activityIndicator2.center = view.center
+        activityIndicator2.hidesWhenStopped = true
+        activityIndicator2.style = .medium
+        activityIndicator2.transform = CGAffineTransform(scaleX: 3, y: 3)
+        view.addSubview(activityIndicator2)
         
     }
     
@@ -33,23 +34,26 @@ class RegisterVC: UIViewController {
             self.view.endEditing(true)
     }
     
-    func startActivity() {
-        activityIndicator.startAnimating()
+    func startActivity(completion: @escaping () -> Void) {
+        activityIndicator2.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.activityIndicator.stopAnimating()
+            self.activityIndicator2.stopAnimating()
+            completion()
         }
     }
     
     @IBAction func registerPressed(_ sender: UIButton) {
-        startActivity()
+        
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error {
                     print("there was an error: \(error.localizedDescription)")
                 }else {
+                    self.startActivity() {
+                        let mainScreen = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
+                        self.navigationController!.pushViewController(mainScreen, animated: true)
+                    }
                     
-                    let mainScreen = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
-                    self.navigationController!.pushViewController(mainScreen, animated: true)
                     
                     
                 }
