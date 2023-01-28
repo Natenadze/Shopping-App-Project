@@ -202,7 +202,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        120
+        130
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -212,7 +212,7 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel.text = currentItem.title
         cell.stockLabel.text = String(currentItem.stock)
         cell.priceLabel.text = String(currentItem.price)
-        cell.chosenQuantityLabel.text = String(currentItem.choosenQuantity!)
+        cell.chosenQuantityLabel.text = String(currentItem.choosenQuantity)
         cell.imageURL = currentItem.thumbnail
         cell.section = indexPath.section
         cell.row = indexPath.row

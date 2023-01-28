@@ -43,21 +43,21 @@ class LoginVC: UIViewController {
     @IBAction func loginPressed(_ sender: UIButton) {
         
         if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            Auth.auth().signIn(withEmail: email, password: password) {[weak self] authResult, error in
                 if let error {
                     print(error.localizedDescription)
-                    if self.emailTextField.text == "" || self.passwordTextField.text == "" {
-                        self.errorLabel.text = "fill in the required fields"
+                    if self?.emailTextField.text == "" || self?.passwordTextField.text == "" {
+                        self?.errorLabel.text = "fill in the required fields"
                     }else {
-                        self.errorLabel.text = "email or password is incorrect"
+                        self?.errorLabel.text = "email or password is incorrect"
                     }
-                    self.emailTextField.text = ""
-                    self.passwordTextField.text = ""
+                    self?.emailTextField.text = ""
+                    self?.passwordTextField.text = ""
                 }else {
-                    self.errorLabel.text = ""
-                    self.startActivity() {
-                        let mainScreen = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
-                        self.navigationController!.pushViewController(mainScreen, animated: true)
+                    self?.errorLabel.text = ""
+                    self?.startActivity() {
+                        let mainScreen = self?.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
+                        self?.navigationController!.pushViewController(mainScreen, animated: true)
                     }
                 }
             }

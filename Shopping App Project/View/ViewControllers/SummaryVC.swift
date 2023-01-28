@@ -62,7 +62,7 @@ class SummaryVC: UIViewController {
 extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        116
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
