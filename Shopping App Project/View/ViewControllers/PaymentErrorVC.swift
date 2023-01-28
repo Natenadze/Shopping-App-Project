@@ -8,13 +8,9 @@
 import UIKit
 
 class PaymentErrorVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
-        
     }
     
     @IBAction func goBackPressed(_ sender: UIButton) {

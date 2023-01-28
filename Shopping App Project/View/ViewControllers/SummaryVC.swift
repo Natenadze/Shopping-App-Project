@@ -36,14 +36,14 @@ class SummaryVC: UIViewController {
             vatLabel.text! = calc.vat + "$"
             deliveryLabel.text = calc.delivery + "$"
         }
-
+        
         navigationController?.navigationBar.isHidden = false
         
         tableView.register(UINib(nibName: "SummaryCell", bundle: nil), forCellReuseIdentifier: "sumCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
@@ -73,12 +73,12 @@ extension SummaryVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sumCell", for: indexPath) as! SummaryCell
         let url = URL(string: (cellInfo?[indexPath.row].image)!)
         
-       
+        
         cell.sumImage.kf.setImage(with: url)
         cell.titleLbl.text = cellInfo?[indexPath.row].title
         cell.quantityLbl.text =  String(cellInfo![indexPath.row].quantity)
         cell.sumLbl.text =  String(cellInfo![indexPath.row].subTotal)
         return cell
     }
- 
+    
 }

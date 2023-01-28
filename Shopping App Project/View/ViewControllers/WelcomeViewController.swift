@@ -30,6 +30,6 @@ class WelcomeViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "registerVC") as! RegisterVC
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }
 
