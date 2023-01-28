@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
     
@@ -14,6 +15,11 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if Auth.auth().currentUser != nil {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! ShoppingPage
+            navigationController?.pushViewController(vc, animated: true)
+        }
+
         
     }
     
