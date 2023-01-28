@@ -25,6 +25,7 @@ class LoginVC: UIViewController {
         activityIndicator.style = .medium
         activityIndicator.transform = CGAffineTransform(scaleX: 3, y: 3)
         view.addSubview(activityIndicator)
+        passwordTextField.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -40,8 +41,7 @@ class LoginVC: UIViewController {
         }
     }
     
-    @IBAction func loginPressed(_ sender: UIButton) {
-        
+    func authorize() {
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) {[weak self] authResult, error in
                 if let error {
@@ -62,5 +62,17 @@ class LoginVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func loginPressed(_ sender: UIButton) {
+        authorize()
+        
+    }
+}
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        authorize()
+        return true
     }
 }

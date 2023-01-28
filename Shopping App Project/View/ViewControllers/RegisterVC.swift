@@ -18,6 +18,7 @@ class RegisterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.delegate = self
         NetworkCheck.shared.checkIt(presenter: self)
         activityIndicator2.center = view.center
         activityIndicator2.hidesWhenStopped = true
@@ -39,8 +40,7 @@ class RegisterVC: UIViewController {
         }
     }
     
-    @IBAction func registerPressed(_ sender: UIButton) {
-        
+    func register() {
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
                 
@@ -67,5 +67,16 @@ class RegisterVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func registerPressed(_ sender: UIButton) {
+        register()
+    }
+}
+
+extension RegisterVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        register()
+        return true
     }
 }
