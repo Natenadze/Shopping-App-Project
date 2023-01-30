@@ -208,7 +208,6 @@ extension ShoppingPage: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CustomCell
         let currentItem = groupedItems[indexPath.section][indexPath.row]
-        
         cell.titleLabel.text = currentItem.title
         cell.stockLabel.text = String(currentItem.stock)
         cell.priceLabel.text = String(currentItem.price)

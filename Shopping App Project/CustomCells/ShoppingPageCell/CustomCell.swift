@@ -7,12 +7,8 @@
 
 import UIKit
 
-
-
 protocol SummaryProtocol {
     func updateSummary(sum: Int, title: String, secNum: Int, rowNum: Int, image: String, isAdding: Bool)
-  
-    
 }
 
 class CustomCell: UITableViewCell {
@@ -33,6 +29,9 @@ class CustomCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layer.borderWidth = 2.0
+        self.layer.cornerRadius = 15.0
+        self.layer.borderColor = UIColor.systemGray4.cgColor
         if titleLabel.textColor == .red {
             plusButton.isEnabled = false
             minusButton.isEnabled = false
@@ -45,35 +44,29 @@ class CustomCell: UITableViewCell {
         cancelTask?()
     }
     
-   
-    
-    
     // MARK: - IBActions
     
     @IBAction func plusPressed(_ sender: UIButton) {
         let q = Int(chosenQuantityLabel.text!)! + 1
         let stock = Int(stockLabel.text!)!
-
+        
         switch q {
         case stock + 1:
             return
         default:
             let _ = Int(priceLabel.text!)! * q
             delegate?.updateSummary(sum: Int(priceLabel.text!)!, title: titleLabel.text!, secNum: section, rowNum: row, image: imageURL, isAdding: true)
-
         }
-        
     }
+    
     @IBAction func minusPressed(_ sender: UIButton) {
         let q = Int(chosenQuantityLabel.text!)!
-
+        
         switch q {
         case 0:
             return
         default:
             delegate?.updateSummary(sum: Int(priceLabel.text!)!, title: titleLabel.text!, secNum: section, rowNum: row, image: imageURL, isAdding: false)
-
         }
-        
     }
 }
